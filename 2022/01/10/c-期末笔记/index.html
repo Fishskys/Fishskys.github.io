@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>c++期末笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="2022&#x2F;1&#x2F;9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++期末笔记">
+<meta property="og:url" content="http://example.com/2022/01/10/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2022&#x2F;1&#x2F;9">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-10T06:41:12.000Z">
+<meta property="article:modified_time" content="2022-01-10T06:46:04.747Z">
 <meta property="article:author" content="瓶装史莱姆酱">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -144,20 +149,26 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-c-期末笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-c-期末笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/10/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/">c++期末笔记</a>
+    <h1 class="article-title" itemprop="name">
+      c++期末笔记
     </h1>
   
 
 <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
 
 <!--显示阅读次数完毕-->
         
@@ -169,12 +180,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2022-1-9"><a href="#2022-1-9" class="headerlink" title="2022/1/9"></a>2022/1/9</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-        
-          <a class="article-more-a" href="/2022/01/10/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/#more">展开全文 >></a>
-        
+        <h1 id="2022-1-9"><a href="#2022-1-9" class="headerlink" title="2022/1/9"></a>2022/1/9</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h2 id="显示字符串首地址"><a href="#显示字符串首地址" class="headerlink" title="显示字符串首地址"></a>显示字符串首地址</h2><p>如果这样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">5</span>] = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line">cout&lt;&lt;str;</span><br></pre></td></tr></table></figure>
+
+<p>并不会输出字符串首地址，而是会将这个地址作为一个字符串的首地址，输出这个地址以后的所有内容，直到遇到结束符’\0’。如，这个例子输出结果为”abcd“。</p>
+<p>所以可以这样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">5</span>] = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line">cout&lt;&lt;(<span class="keyword">void</span>*)str;</span><br></pre></td></tr></table></figure>
+
+<p>把字符指针，强制转化为void 指针，void * 指的是，这个指针可以指向任何类型的数据。这样输出结果就是str的首地址。</p>
+<h2 id="结构体内存分配"><a href="#结构体内存分配" class="headerlink" title="结构体内存分配"></a>结构体内存分配</h2><p>首先，结构在C语言中也是一种数据类型，叫做聚组类型（还包括数组）。他和其他的数据类型是一样的，在定义一个结构体的时候，系统并不会为他真正的分配内存空间(定义的结构体变量要在编译的阶段才分配空间，而结构体指针要显示的使用malloca来分配空间)，也就是说，在定义结构体这种数据类型的时候是不会分配内存空间的，只有在定义变量的时候，才会分配。</p>
+<p>下面是摘自百度百科 对结构题存储的三点：</p>
+<p><strong>1) 结构体变量的首地址能够被其最宽基本类型成员的大小所整除；</strong>　　</p>
+<p><strong>2) 结构体每个成员相对于结构体首地址的偏移量都是成员大小的整数倍，如有需要编译器会  在成员之间加上填充字节；</strong></p>
+<p><strong>3) 结构体的总大小为结构体最宽基本类型成员大小的整数倍，如有需要编译器会在最末一个成员之后加上填充字节</strong></p>
+<p><strong>下面是来自《c和指针》的介绍</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">s1</span>&#123;</span></span><br><span class="line">　　<span class="keyword">char</span> a;</span><br><span class="line">　　<span class="keyword">int</span> b;</span><br><span class="line">　　<span class="keyword">char</span> c;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>首先，结构体在存储的时候，结构体的首地址必须能够被其中最宽数据类型整除。（在s1中，最宽数据类型为int，在32位系统中为4Byte），</strong></p>
+<p><strong>其次，参照第二条，第一个数据时char（已经保证了，结构的起始地址是4的整数倍），存储一个char,占一个Byte,要保证下一个int的存储起始地址是4的整数倍，所以要在char后面填充三个Byte，然后在存储第三个数据。</strong></p>
+<p><strong>第三，最后一个也是char类型，他就占一个Byte，肯定是他存储位置的整数倍，最后参照第三条，结构体的总大小为最宽数据类型的整数倍，所以会在第二个char之后再填充三个Byte。</strong></p>
+<p><strong>这样的话，总共占据的空间是1+3+4+1+3 = 12（红色为填充字符）</strong></p>
+<p><strong>【但是】，调换一下结构中数据成员的顺序</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">s1</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> b;</span><br><span class="line">　　<span class="keyword">char</span> a;</span><br><span class="line">　　<span class="keyword">char</span> c;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>同样地分析4+1+1+2 = 8</strong></p>
+<p><strong>相比之下，存储空间的效率提高33%。</strong></p>
+<p>以下是系统对结构体的内存分配的详细介绍：</p>
+<p>1、结构体变量的首地址是结构体中最宽数据类型的整数倍。</p>
+<p>　　编译器在给结构体开辟空间时，首先找到结构体中最宽的基本数据类型，然后寻找内存地址能是该基本数据类型的整倍的位置，作为结构体的首地址。</p>
+<p><strong>2</strong>、结构体每个成员相对于结构体首地址的偏移量（offset）都是成员大小的整数倍，如有需要编译器会在成员之间加上填充字节。</p>
+<p>　　为结构体的一个成员开辟空间之前，编译器首先检查预开辟空间的首地址相对于结构体首地址的偏移是否是本成员的整数倍，若是，则存放本成员，反之，则在本成员和上一个成员之间填充一定的字节，以达到整数倍的要求，也就是将预开辟空间的首地址后移几个字节。</p>
+<p><strong>3、结构体的总大小为结构体中最宽基本数据成员的整数倍。如有需要，编译器将会在结构体的添加填充字符。</strong></p>
+<p><strong>4、结构体中的数据成员按照所占空间从大到小的顺序来排列的话，这样存储空间就会得以提高。</strong></p>
+<p><strong>4、现在对四条进行修正。在组织数据结构的数据成员的时候，可以将相同类型的成员放在一起，这样就减少了编译器为了对齐而添加的填充字符。</strong></p>
+<p>【摘自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiumingcheng/p/11297988.html">结构体的内存分配机制 - 邱明成 - 博客园 (cnblogs.com)</a>】</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -201,92 +266,17 @@
   </div>
 </article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-线代编程作业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/">线代编程作业</a>
-    </h1>
   
+    <a href="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线代编程作业</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
-  	<time datetime="2022-01-02T08:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SJTU线代编程作业"><a href="#SJTU线代编程作业" class="headerlink" title="SJTU线代编程作业"></a>SJTU线代编程作业</h1><p>#SJTU</p>
-        
-          <a class="article-more-a" href="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线代</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -301,171 +291,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-大学生心理健康开卷参考资料" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%83%E7%90%86%E5%81%A5%E5%BA%B7%E5%BC%80%E5%8D%B7%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">大学生心理健康开卷参考资料</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2022/01/02/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%83%E7%90%86%E5%81%A5%E5%BA%B7%E5%BC%80%E5%8D%B7%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/" class="archive-article-date">
-  	<time datetime="2022-01-02T02:59:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SJTU心理健康开卷考试"><a href="#SJTU心理健康开卷考试" class="headerlink" title="SJTU心理健康开卷考试"></a>SJTU心理健康开卷考试</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-        
-          <a class="article-more-a" href="/2022/01/02/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%83%E7%90%86%E5%81%A5%E5%BA%B7%E5%BC%80%E5%8D%B7%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022-1-9"><span class="toc-number">1.</span> <span class="toc-text">2022&#x2F;1&#x2F;9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%9C%B0%E5%9D%80"><span class="toc-number">2.1.</span> <span class="toc-text">显示字符串首地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text">结构体内存分配</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-基于Arduino的智能物流小车" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/29/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E7%89%A9%E6%B5%81%E5%B0%8F%E8%BD%A6/">基于Arduino的智能物流小车</a>
-    </h1>
   
 
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/12/29/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E7%89%A9%E6%B5%81%E5%B0%8F%E8%BD%A6/" class="archive-article-date">
-  	<time datetime="2021-12-29T05:37:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="工程实践项目：基于Arduino板的智能物流小车"><a href="#工程实践项目：基于Arduino板的智能物流小车" class="headerlink" title="工程实践项目：基于Arduino板的智能物流小车"></a><em>工程实践项目：基于Arduino板的智能物流小车</em></h1><p>#我的第一篇博客，就拿工程实践水一下了。</p>
-        
-          <a class="article-more-a" href="/2021/12/29/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E7%89%A9%E6%B5%81%E5%B0%8F%E8%BD%A6/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Arduino</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">物流小车</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -498,8 +349,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
