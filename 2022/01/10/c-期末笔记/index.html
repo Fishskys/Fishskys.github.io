@@ -16,7 +16,7 @@
 <meta property="og:description" content="2022&#x2F;1&#x2F;9">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-10T06:41:12.000Z">
-<meta property="article:modified_time" content="2022-01-10T06:46:04.747Z">
+<meta property="article:modified_time" content="2022-01-11T02:54:13.128Z">
 <meta property="article:author" content="瓶装史莱姆酱">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -216,6 +216,16 @@
 <p><strong>4、结构体中的数据成员按照所占空间从大到小的顺序来排列的话，这样存储空间就会得以提高。</strong></p>
 <p><strong>4、现在对四条进行修正。在组织数据结构的数据成员的时候，可以将相同类型的成员放在一起，这样就减少了编译器为了对齐而添加的填充字符。</strong></p>
 <p>【摘自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiumingcheng/p/11297988.html">结构体的内存分配机制 - 邱明成 - 博客园 (cnblogs.com)</a>】</p>
+<h2 id="C-建立动态二维数组"><a href="#C-建立动态二维数组" class="headerlink" title="C++建立动态二维数组"></a>C++建立动态二维数组</h2><h3 id="1-使用数组指针，分配一个指针数组，将其首地址保存在b中，然后再为指针数组的每个元素分配一个数组"><a href="#1-使用数组指针，分配一个指针数组，将其首地址保存在b中，然后再为指针数组的每个元素分配一个数组" class="headerlink" title="1.使用数组指针，分配一个指针数组，将其首地址保存在b中，然后再为指针数组的每个元素分配一个数组"></a>1.使用数组指针，分配一个指针数组，将其首地址保存在b中，然后再为指针数组的每个元素分配一个数组</h3><p>​              </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> **b=<span class="keyword">new</span> <span class="keyword">int</span>*[row];       <span class="comment">//分配一个指针数组，将其首地址保存在b中                                         for(i=0;i&lt;row;i++)             //为指针数组的每个元素分配一个数组</span></span><br><span class="line">           b[i]=<span class="keyword">new</span> <span class="keyword">int</span>[col];</span><br><span class="line">      </span><br><span class="line">   <span class="comment">// 该方法定义的动态二维数组的释放需先释放指针数组的每个元素指向的数组，然后再释放该指针数组：</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;row;i++)</span><br><span class="line">	&#123;</span><br><span class="line">    	<span class="keyword">delete</span> [col]b[i];</span><br><span class="line">        b[i]=<span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">delete</span> [row]b;</span><br><span class="line">b=<span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> _tmain(<span class="keyword">int</span> argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> row,column;</span><br><span class="line">	cin&gt;&gt;row&gt;&gt;column;</span><br><span class="line"><span class="comment">//方法一</span></span><br><span class="line"><span class="comment">//申请空间</span></span><br><span class="line">	<span class="keyword">int</span> ** a = <span class="keyword">new</span> <span class="keyword">int</span> *[row];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; row;i++)</span><br><span class="line">	a[i] = <span class="keyword">new</span> <span class="keyword">int</span>[column];</span><br><span class="line"> </span><br><span class="line"><span class="comment">//使用空间</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; row;j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k&lt; column;k++)</span><br><span class="line">		a[j][k] = <span class="built_in">rand</span>()%<span class="number">100</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; row;j++)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k&lt; column;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[j][k] = <span class="built_in">rand</span>()%<span class="number">100</span>;</span><br><span class="line">		cout&lt;&lt;a[j][k]&lt;&lt;<span class="string">&quot;     &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//释放空间</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; row;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">delete</span> a[i];</span><br><span class="line">	a[i] = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">delete</span> [row]a;</span><br><span class="line">	a = <span class="literal">NULL</span>;	</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-利用vector"><a href="#2-利用vector" class="headerlink" title="2.利用vector"></a>2.利用vector</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> _tmain(<span class="keyword">int</span> argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> row,column;</span><br><span class="line">	cin&gt;&gt;row&gt;&gt;column;</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line"><span class="comment">//申请空间</span></span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">a</span>(row,vector&lt;<span class="keyword">int</span>&gt;(column));</span><br><span class="line"><span class="comment">//使用空间</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; row;j++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k&lt; column;k++)</span><br><span class="line">			a[j][k] = <span class="built_in">rand</span>()%<span class="number">100</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; row;j++)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k&lt; column;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[j][k] = <span class="built_in">rand</span>()%<span class="number">100</span>;</span><br><span class="line">		cout&lt;&lt;a[j][k]&lt;&lt;<span class="string">&quot;     &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>————————————————<br>版权声明：本文为CSDN博主「longshengguoji」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/longshengguoji/article/details/11131365">https://blog.csdn.net/longshengguoji/article/details/11131365</a></p>
 
       
 
@@ -269,6 +279,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/01/30/%E6%AF%8F%E5%A4%A9%E6%B6%A8%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每天涨一点知识
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">线代编程作业</div>
@@ -298,7 +317,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022-1-9"><span class="toc-number">1.</span> <span class="toc-text">2022&#x2F;1&#x2F;9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%9C%B0%E5%9D%80"><span class="toc-number">2.1.</span> <span class="toc-text">显示字符串首地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text">结构体内存分配</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022-1-9"><span class="toc-number">1.</span> <span class="toc-text">2022&#x2F;1&#x2F;9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%9C%B0%E5%9D%80"><span class="toc-number">2.1.</span> <span class="toc-text">显示字符串首地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text">结构体内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E5%BB%BA%E7%AB%8B%E5%8A%A8%E6%80%81%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">2.3.</span> <span class="toc-text">C++建立动态二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%EF%BC%8C%E5%88%86%E9%85%8D%E4%B8%80%E4%B8%AA%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%EF%BC%8C%E5%B0%86%E5%85%B6%E9%A6%96%E5%9C%B0%E5%9D%80%E4%BF%9D%E5%AD%98%E5%9C%A8b%E4%B8%AD%EF%BC%8C%E7%84%B6%E5%90%8E%E5%86%8D%E4%B8%BA%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E5%88%86%E9%85%8D%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.使用数组指针，分配一个指针数组，将其首地址保存在b中，然后再为指针数组的每个元素分配一个数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%A9%E7%94%A8vector"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.利用vector</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -425,14 +444,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Arduino</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">物流小车</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">线代</a>
               </li>
              
@@ -442,6 +453,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">matlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Arduino</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">物流小车</a>
               </li>
             
             <div class="clearfix"></div>
