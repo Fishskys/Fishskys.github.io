@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="SJTU线代编程作业#SJTU">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://astonefishsky.github.io/1.png">
+<meta property="og:image" content="https://astonefishsky.github.io/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png">
 <meta property="article:published_time" content="2022-01-02T08:31:46.000Z">
 <meta property="article:modified_time" content="2022-01-02T08:50:16.955Z">
 <meta property="article:author" content="瓶装史莱姆酱">
@@ -24,7 +24,7 @@
 <meta property="article:tag" content="线代">
 <meta property="article:tag" content="matlab">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://astonefishsky.github.io/1.png">
+<meta name="twitter:image" content="https://astonefishsky.github.io/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -197,7 +197,7 @@
 <p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
 <p>项依次排在行列式的各行上.</p>
 <p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
-<p><img src="/1.png"></p>
+<p><img src="/2022/01/02/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
 <p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
 <p>文件为源文件与输出文件.</p>
 <h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -438,6 +438,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">typora</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图片显示</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Arduino</a>
               </li>
              
@@ -455,6 +471,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">matlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
             
             <div class="clearfix"></div>
