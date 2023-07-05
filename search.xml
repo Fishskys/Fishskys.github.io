@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo+Next-8.17.1美化教程</title>
+    <url>/Hexo/Hexo-Next-8-17-1%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p> 这几天也算是查资料+自己研究终于美化了一个自己较为满意的博客。</p>
+<p>效果图如下，接下来上教程，版本是Hexo-6.0.0+Next-8.17.1，其它版本文件结构会有所不同。</p>
+<p><img src="/Hexo/Hexo-Next-8-17-1%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/image-20230705111333616.png" alt="image-20230705111333616"></p>
+<span id="more"></span>
+
+<p>安装和部署可以看我另一篇博客《重拾hexo》，这篇只讲美化部分。</p>
+<p>参考官方文档<a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT</a>以及<a href="https://zhuanlan.zhihu.com/p/30836436">Hexo+Next主题优化 - 知乎 (zhihu.com)</a>和<a href="https://zhuanlan.zhihu.com/p/252983030">Ubuntu + Hexo + Next 8.0 进阶美化篇二 - 知乎 (zhihu.com)</a></p>
+<p>其中1-？都可以在官方文档找到详细教程，建议手动查阅官方文档</p>
+<h4 id="1-切换布局样式"><a href="#1-切换布局样式" class="headerlink" title="1.切换布局样式"></a>1.切换布局样式</h4><p>在<code>NexT _config.yml</code>文件中修改，Next提供了四种布局，个人最喜欢Pisces，展示主题也是Pisces</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes </span><br><span class="line"># scheme: Muse </span><br><span class="line"># scheme: Mist </span><br><span class="line"> scheme: Pisces </span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<p>其中Gemini主题基本样式与Pisces相同，不同点在于网站默认界面在“归档”。</p>
+<h4 id="2-菜单栏修改"><a href="#2-菜单栏修改" class="headerlink" title="2.菜单栏修改"></a>2.菜单栏修改</h4><h5 id="板块数量修改"><a href="#板块数量修改" class="headerlink" title="板块数量修改"></a>板块数量修改</h5><p>默认的菜单栏只有“首页”和“关于”两个板块，Next为我们提供了其它可选项，在<code>NexT _config.yml</code>文件中修改。</p>
+<p>找到Menu Settings，可以看到menu下有很多其它可选项，通过用法说明可以明白，冒号前是板块名字，后面分别是目录和图标，其中图标可以自行到<a href="https://fontawesome.dashgame.com/">Font Awesome，一套绝佳的图标字体库和CSS框架 (dashgame.com)</a>替换成心仪的图标。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Menu Settings</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># Usage: `Key: /link/ || icon`</span><br><span class="line"># Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-sensitive.</span><br><span class="line"># Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.</span><br><span class="line"># External url should start with http:// or https://</span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>可以参考我的配置，我增加了标签(tags)、分类(categories)和归档(archives)。</p>
+<p>另外，还需要对一些选项进行配置，建议参考<a href="https://hexo-next.readthedocs.io/zh_CN/latest/next/base/%E8%8F%9C%E5%8D%95%E6%A0%8F/">菜单栏 - Hexo-NexT</a></p>
+<p>配置文件中紧随其后可以对菜单后面的数字进行设置。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line">  badges: true</span><br></pre></td></tr></table></figure>
+
+<p>badges设置为true可以显示数字。</p>
+<h5 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h5><p>参考<a href="https://hexo-next.readthedocs.io/zh_CN/latest/next/advanced/%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1/">搜索服务 - Hexo-NexT</a></p>
+<h5 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h5><p>在<code>NexT _config.yml</code>配置文件中找到这段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Define custom file paths.</span><br><span class="line"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span><br><span class="line">custom_file_path:</span><br><span class="line">  #head: source/_data/head.njk</span><br><span class="line">  #header: source/_data/header.njk</span><br><span class="line">  #sidebar: source/_data/sidebar.njk</span><br><span class="line">  #postMeta: source/_data/post-meta.njk</span><br><span class="line">  #postBodyStart: source/_data/post-body-start.njk</span><br><span class="line">  #postBodyEnd: source/_data/post-body-end.njk</span><br><span class="line">  #footer: source/_data/footer.njk</span><br><span class="line">  #bodyEnd: source/_data/body-end.njk</span><br><span class="line">  #variable: source/_data/variables.styl</span><br><span class="line">  #mixin: source/_data/mixins.styl</span><br><span class="line">  style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
+
+<p>可以看到Next为我们提供了个性化的一些接口，去掉最后一行的注释，在<code>\blog\source\</code>文件夹中新建文件夹，命名为<code>_data</code>，在其中新建名为<code>styles.styl</code>的文件，打开编辑，输入以下内容，可以根据我的注释自行修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//菜单栏整体背景</span><br><span class="line">header.header &#123;</span><br><span class="line">	//距离最上边的距离</span><br><span class="line">    margin-top: 5px;</span><br><span class="line">    //背景颜色，最后一个参数0-1代表透明度，越低越透明</span><br><span class="line">    background-color: rgba(255 ,255 ,255 ,0.7);</span><br><span class="line">    //圆角，分别为左上，右上，右下，左下</span><br><span class="line">    border-radius: 30px 30px 30px 30px;</span><br><span class="line">    //阴影</span><br><span class="line">    box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);   	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//史莱姆小屋那个黑框</span><br><span class="line">.site-brand-container &#123;</span><br><span class="line">    background-color: rgba(0, 0, 0, 0.9);</span><br><span class="line">    border-radius: 30px 30px 0px 0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-侧边栏修改"><a href="#3-侧边栏修改" class="headerlink" title="3.侧边栏修改"></a>3.侧边栏修改</h4><h5 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h5><p>在<code>NexT _config.yml</code>配置文件中找到这段，侧边栏设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Sidebar Settings</span><br><span class="line"># See: https://theme-next.js.org/docs/theme-settings/sidebar</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在后面找到头像设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/first.png #</span><br><span class="line">  # If true, the avatar will be displayed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
+
+<p>url后面为头像的地址，具体在<code>blog\themes\next\source\images</code></p>
+<p>rounded：代表头像框类型，true为圆形，false为方形</p>
+<p>rotated：为头像旋转特效，true时，鼠标放在头像上会旋转。</p>
+<h5 id="添加github链接和email"><a href="#添加github链接和email" class="headerlink" title="添加github链接和email"></a>添加github链接和email</h5><p>继续在配置文件下方找到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Social Links</span><br><span class="line"># Usage: `Key: permalink || icon`</span><br><span class="line"># Key is the link label showing to end users.</span><br><span class="line"># Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.</span><br><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/yourgithubname || fab fa-github</span><br><span class="line">  E-Mail: mailto:youremail@126.com || fa fa-envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+
+<p>social:后为可以添加的内容，格式也在usage中说明了，可以根据需要添加，也可以自定义内容。</p>
+<h5 id="样式修改-1"><a href="#样式修改-1" class="headerlink" title="样式修改"></a>样式修改</h5><p>在<code>styles.styl</code>中添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.sidebar-inner &#123;</span><br><span class="line">    background-color: rgba(255 ,255 ,255 ,0.7);</span><br><span class="line">    border-radius: 30px 30px 30px 30px;</span><br><span class="line">    box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每一行的意义可以参考<a href="#2.%E8%8F%9C%E5%8D%95%E6%A0%8F%E4%BF%AE%E6%94%B9">2.菜单栏修改</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>Next</tag>
+        <tag>博客美化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++期末笔记</title>
     <url>/SJTU/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>程序设计思想与方法-期末复习</p>
@@ -112,90 +171,6 @@
       <tags>
         <tag>Arduino</tag>
         <tag>物流小车</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每天涨一点知识</title>
-    <url>/%E9%9A%8F%E7%AC%94/%E6%AF%8F%E5%A4%A9%E6%B6%A8%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>每天涨一点知识</p>
-<span id="more"></span>
-
-<h2 id="1-关于网页www前缀的问题"><a href="#1-关于网页www前缀的问题" class="headerlink" title="1.关于网页www前缀的问题"></a>1.关于网页www前缀的问题</h2><p>​        在输入豆瓣电影网址（movie.douban.com）的时候我在地址栏输入”<a href="http://www.movie.douban.com“,/">www.movie.douban.com“，</a> 意外的是，竟然无法访问，尝试重新输了几次，还是不行。后来尝试着把www去掉，就能正常访问了。</p>
-<p>​        在这之前，在我的认知里，“www”在输网址的时候都是可有可无的存在，访问结果都是一样的，但这件事告诉我并没有这么简单。所以我去搜索了一下。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/364693787">网址需要加www吗？ - 知乎 (zhihu.com)</a></p>
-<p><a href="https://www.zhihu.com/question/20414602">为什么越来越多的网站域名不加「www」前缀？ - 知乎 (zhihu.com)</a></p>
-<p>​        果然，又是日常容易被忽略的东西呢。</p>
-<h2 id="2-爬虫爬取网页遇到”-xa0”怎么办"><a href="#2-爬虫爬取网页遇到”-xa0”怎么办" class="headerlink" title="2.爬虫爬取网页遇到”\xa0”怎么办"></a>2.爬虫爬取网页遇到”\xa0”怎么办</h2><p><a href="https://www.cnblogs.com/yqpy/p/8203783.html">python如何去掉字符串‘\xa0’ - 嶙羽 - 博客园 (cnblogs.com)</a></p>
-<p><a href="https://blog.csdn.net/thewindkee/article/details/79890207">(7条消息) python 爬虫爬取内容时， \xa0 、 \u3000 的含义与处理方法_thewindkee的博客-CSDN博客_\xa0\xa0</a></p>
-<h2 id="3-python-整个列表的数据类型转换"><a href="#3-python-整个列表的数据类型转换" class="headerlink" title="3.python 整个列表的数据类型转换"></a>3.python 整个列表的数据类型转换</h2><p>在使用线性回归算法预测气温时，发现从网页上爬取的温度是str类型的，需要转换成num类型，尝试了以下方法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">        j = <span class="built_in">float</span>(j)</span><br></pre></td></tr></table></figure>
-
-<p>但是并没有用。</p>
-<p>感觉使用for循环一个一个元素去强制转换会有点复杂，我尝试上网搜了一下，能不能直接转换整个列表元素类型的函数。</p>
-<p><a href="https://blog.csdn.net/chinacmt/article/details/68488918">(7条消息) python修改list中所有元素类型_chinacmt的博客-CSDN博客_python改变list中的类型</a></p>
-<p>这篇博客详细介绍了三种方法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = <span class="built_in">list</span>()</span><br><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    new.append(<span class="built_in">int</span>(x))</span><br><span class="line"><span class="built_in">print</span>(new)</span><br></pre></td></tr></table></figure>
-
-<p>这种方法最容易想到，就是一个一个转换，但是，对于二维的列表（有一定结构）不好使</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
-
-<p>这个对于二维及以上的也有用，而且不会破坏原有的结构</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = <span class="built_in">map</span>(<span class="built_in">int</span>, a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    <span class="built_in">print</span>(i, <span class="built_in">type</span>(i))</span><br></pre></td></tr></table></figure>
-
-<p>这种方法同样也只适用于一维结构，而且，map的返回值是map object，需要强制转换成list</p>
-<p>我想了一下，第三种方法配合for循环也能实现高维结构</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">new1 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(new)):</span><br><span class="line">    new1.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">float</span>, new[i])))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<p>这样确实不会破坏原有的结构，但是也确实麻烦，还是用第二种方法吧</p>
-<h2 id="4-阿里云盘秒传"><a href="#4-阿里云盘秒传" class="headerlink" title="4.阿里云盘秒传"></a>4.阿里云盘秒传</h2><p>再阿里云盘上传文件时，发现有些1G多的文件竟然瞬间（不夸张）就上传完成了，一开始我还以为是刚下载的文件的文件上唇速度很快，然后搜了一下，发现并不是：</p>
-<p><a href="https://developer.aliyun.com/article/42506">【转】烂泥：网盘的秒传原理-阿里云开发者社区 (aliyun.com)</a></p>
-<h2 id="5-安装Ubuntu时遇到的问题"><a href="#5-安装Ubuntu时遇到的问题" class="headerlink" title="5.安装Ubuntu时遇到的问题"></a>5.安装Ubuntu时遇到的问题</h2><p>安装界面太小导致继续等按钮显示不出来，按住win键＋鼠标左键可以拖动窗口</p>
-<h2 id="6-pak文件"><a href="#6-pak文件" class="headerlink" title="6.pak文件"></a>6.pak文件</h2><p>在翻wildlif时发现了游戏所占的大部分空间为一个pak类型的文件，这是一个压缩类型的文件，游戏用的比较多，比如植物大战僵尸</p>
-<p><a href="https://zhuanlan.zhihu.com/p/400950006">Pak文件格式说明 - 知乎 (zhihu.com)</a></p>
-<h2 id="7-如何使某个文件夹内的图片不被显示在相册里？"><a href="#7-如何使某个文件夹内的图片不被显示在相册里？" class="headerlink" title="7.如何使某个文件夹内的图片不被显示在相册里？"></a>7.如何使某个文件夹内的图片不被显示在相册里？</h2><p>很多游戏内图片被扫描进去，多达几千张，显得很乱。</p>
-<p>解决方法：在不想被扫描的文件夹里创建一个名为“.nomedia”的空文件夹即可。</p>
-<p>此方法对视频、音频同样有效，但对安装包等其它文件没有用。</p>
-<p><a href="https://blog.csdn.net/qq_39994562/article/details/107310118">(7条消息) android 图片保存到文件夹中 但不在本地图库中显示_王虫虫就爱吃的博客-CSDN博客</a></p>
-<p>2022/7/21更新</p>
-<p>.nomedia文件夹功能似乎失效，但创建.nomedia文件仍可用（使用第三方文件管理器如mt，es等</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线代编程作业</title>
-    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<p>SJTU线性代数编程作业</p>
-<span id="more"></span>
-
-<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
-<p>(1)计算23阶行列式D</p>
-<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
-<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
-<p>(二)行列式D(矩阵A)的产生:</p>
-<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
-<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
-<p>项依次排在行列式的各行上.</p>
-<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
-<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
-<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
-<p>文件为源文件与输出文件.</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SJTU</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>线代</tag>
-        <tag>matlab</tag>
       </tags>
   </entry>
   <entry>
@@ -412,6 +387,90 @@
       </tags>
   </entry>
   <entry>
+    <title>每天涨一点知识</title>
+    <url>/%E9%9A%8F%E7%AC%94/%E6%AF%8F%E5%A4%A9%E6%B6%A8%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>每天涨一点知识</p>
+<span id="more"></span>
+
+<h2 id="1-关于网页www前缀的问题"><a href="#1-关于网页www前缀的问题" class="headerlink" title="1.关于网页www前缀的问题"></a>1.关于网页www前缀的问题</h2><p>​        在输入豆瓣电影网址（movie.douban.com）的时候我在地址栏输入”<a href="http://www.movie.douban.com“,/">www.movie.douban.com“，</a> 意外的是，竟然无法访问，尝试重新输了几次，还是不行。后来尝试着把www去掉，就能正常访问了。</p>
+<p>​        在这之前，在我的认知里，“www”在输网址的时候都是可有可无的存在，访问结果都是一样的，但这件事告诉我并没有这么简单。所以我去搜索了一下。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/364693787">网址需要加www吗？ - 知乎 (zhihu.com)</a></p>
+<p><a href="https://www.zhihu.com/question/20414602">为什么越来越多的网站域名不加「www」前缀？ - 知乎 (zhihu.com)</a></p>
+<p>​        果然，又是日常容易被忽略的东西呢。</p>
+<h2 id="2-爬虫爬取网页遇到”-xa0”怎么办"><a href="#2-爬虫爬取网页遇到”-xa0”怎么办" class="headerlink" title="2.爬虫爬取网页遇到”\xa0”怎么办"></a>2.爬虫爬取网页遇到”\xa0”怎么办</h2><p><a href="https://www.cnblogs.com/yqpy/p/8203783.html">python如何去掉字符串‘\xa0’ - 嶙羽 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://blog.csdn.net/thewindkee/article/details/79890207">(7条消息) python 爬虫爬取内容时， \xa0 、 \u3000 的含义与处理方法_thewindkee的博客-CSDN博客_\xa0\xa0</a></p>
+<h2 id="3-python-整个列表的数据类型转换"><a href="#3-python-整个列表的数据类型转换" class="headerlink" title="3.python 整个列表的数据类型转换"></a>3.python 整个列表的数据类型转换</h2><p>在使用线性回归算法预测气温时，发现从网页上爬取的温度是str类型的，需要转换成num类型，尝试了以下方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">        j = <span class="built_in">float</span>(j)</span><br></pre></td></tr></table></figure>
+
+<p>但是并没有用。</p>
+<p>感觉使用for循环一个一个元素去强制转换会有点复杂，我尝试上网搜了一下，能不能直接转换整个列表元素类型的函数。</p>
+<p><a href="https://blog.csdn.net/chinacmt/article/details/68488918">(7条消息) python修改list中所有元素类型_chinacmt的博客-CSDN博客_python改变list中的类型</a></p>
+<p>这篇博客详细介绍了三种方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = <span class="built_in">list</span>()</span><br><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    new.append(<span class="built_in">int</span>(x))</span><br><span class="line"><span class="built_in">print</span>(new)</span><br></pre></td></tr></table></figure>
+
+<p>这种方法最容易想到，就是一个一个转换，但是，对于二维的列表（有一定结构）不好使</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p>这个对于二维及以上的也有用，而且不会破坏原有的结构</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = <span class="built_in">map</span>(<span class="built_in">int</span>, a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    <span class="built_in">print</span>(i, <span class="built_in">type</span>(i))</span><br></pre></td></tr></table></figure>
+
+<p>这种方法同样也只适用于一维结构，而且，map的返回值是map object，需要强制转换成list</p>
+<p>我想了一下，第三种方法配合for循环也能实现高维结构</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">new1 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(new)):</span><br><span class="line">    new1.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">float</span>, new[i])))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>这样确实不会破坏原有的结构，但是也确实麻烦，还是用第二种方法吧</p>
+<h2 id="4-阿里云盘秒传"><a href="#4-阿里云盘秒传" class="headerlink" title="4.阿里云盘秒传"></a>4.阿里云盘秒传</h2><p>再阿里云盘上传文件时，发现有些1G多的文件竟然瞬间（不夸张）就上传完成了，一开始我还以为是刚下载的文件的文件上唇速度很快，然后搜了一下，发现并不是：</p>
+<p><a href="https://developer.aliyun.com/article/42506">【转】烂泥：网盘的秒传原理-阿里云开发者社区 (aliyun.com)</a></p>
+<h2 id="5-安装Ubuntu时遇到的问题"><a href="#5-安装Ubuntu时遇到的问题" class="headerlink" title="5.安装Ubuntu时遇到的问题"></a>5.安装Ubuntu时遇到的问题</h2><p>安装界面太小导致继续等按钮显示不出来，按住win键＋鼠标左键可以拖动窗口</p>
+<h2 id="6-pak文件"><a href="#6-pak文件" class="headerlink" title="6.pak文件"></a>6.pak文件</h2><p>在翻wildlif时发现了游戏所占的大部分空间为一个pak类型的文件，这是一个压缩类型的文件，游戏用的比较多，比如植物大战僵尸</p>
+<p><a href="https://zhuanlan.zhihu.com/p/400950006">Pak文件格式说明 - 知乎 (zhihu.com)</a></p>
+<h2 id="7-如何使某个文件夹内的图片不被显示在相册里？"><a href="#7-如何使某个文件夹内的图片不被显示在相册里？" class="headerlink" title="7.如何使某个文件夹内的图片不被显示在相册里？"></a>7.如何使某个文件夹内的图片不被显示在相册里？</h2><p>很多游戏内图片被扫描进去，多达几千张，显得很乱。</p>
+<p>解决方法：在不想被扫描的文件夹里创建一个名为“.nomedia”的空文件夹即可。</p>
+<p>此方法对视频、音频同样有效，但对安装包等其它文件没有用。</p>
+<p><a href="https://blog.csdn.net/qq_39994562/article/details/107310118">(7条消息) android 图片保存到文件夹中 但不在本地图库中显示_王虫虫就爱吃的博客-CSDN博客</a></p>
+<p>2022/7/21更新</p>
+<p>.nomedia文件夹功能似乎失效，但创建.nomedia文件仍可用（使用第三方文件管理器如mt，es等</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线代编程作业</title>
+    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<p>SJTU线性代数编程作业</p>
+<span id="more"></span>
+
+<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
+<p>(1)计算23阶行列式D</p>
+<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
+<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
+<p>(二)行列式D(矩阵A)的产生:</p>
+<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
+<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
+<p>项依次排在行列式的各行上.</p>
+<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
+<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
+<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
+<p>文件为源文件与输出文件.</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SJTU</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>线代</tag>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>重拾hexo</title>
     <url>/Hexo/%E9%87%8D%E6%8B%BEhexo/</url>
     <content><![CDATA[<p>一年半</p>
@@ -476,6 +535,9 @@
 <p>正好摸鱼要下班了，明天更新hexo的配置、主题等内容。</p>
 <h3 id="2023-06-30"><a href="#2023-06-30" class="headerlink" title="2023.06.30"></a>2023.06.30</h3><p>今天写一写hexo的配置，官网<a href="https://hexo.io/zh-cn/">Hexo</a></p>
 <p>发现hexo官网就有详细的安装、建站、部署教程，突然感觉昨天找了那么久的教程是浪费时间。</p>
+<p>先放版本Hexo-6.0，Next-8.17.1，后续版本文件结构可能会有变化</p>
+<img src="image-20230705111011824.png" alt="image-20230705111011824" style="zoom: 67%;" />
+
 <h4 id="图片资源显示问题"><a href="#图片资源显示问题" class="headerlink" title="图片资源显示问题"></a>图片资源显示问题</h4><p>在昨天写这个博客的时候，我就隐隐约约记得博客的图片显示貌似有点问题。今天看了官网的教程和搜了一下“typora与hexo”后，我大概明白了问题所在。</p>
 <p><strong>主要矛盾在于相对路径的不统一。</strong></p>
 <p>在使用typora插入图片时，通常采用相对路径的方式，例如在blog文件夹下，有“重拾hexo.md”文件和同名文件夹，同名文件夹中存放该md文件的图片，那么在typora引用该文件时，可以采用该方式：</p>
@@ -514,15 +576,21 @@
 <p>3.修改文章间距线宽度和长度，添加边框阴影</p>
 <p>4.右上角增加github</p>
 <p>5.菜单增加github链接和Email</p>
-<p>6.网站底“小红心”改为“by”，”由”“强力驱动“改为“Thanks”，去除样式提示</p>
-<p>7.增加字数提示</p>
+<p>6.网站底“小红心”改为“by”，”由”“强力驱动“改为“Thanks”，去除样式提示，修改字体颜色。</p>
+<p>7.增加文章字数提示</p>
 <p>8.打开底部tag_icon</p>
-<p>9.代码块高亮主题修改</p>
+<p>9.代码块高亮主题修改（未成功）</p>
 <p>10.添加背景图</p>
 <p>11.添加评论</p>
+<p>12.菜单栏和侧边栏修改透明度、添加阴影和圆角</p>
+<p>13.添加头像</p>
 <p>已知问题：代码高亮主题修改报错，大概是路径斜杠问题</p>
 <p><img src="/Hexo/%E9%87%8D%E6%8B%BEhexo/image-20230704160613936.png" alt="image-20230704160613936"></p>
 <p><a href="https://zhuanlan.zhihu.com/p/252983030">Ubuntu + Hexo + Next 8.0 进阶美化篇二 - 知乎 (zhihu.com)</a></p>
+<p>目前的样子</p>
+<img src="image-20230705110502037.png" alt="image-20230705110502037" style="zoom: 50%;" />
+
+<p>后面可能会单独出一篇美化教程。</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
