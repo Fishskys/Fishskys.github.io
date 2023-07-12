@@ -285,6 +285,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Next主题在首页显示图片</title>
+    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
+<span id="more"></span>
+
+<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
+<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
+<img src="/image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
+
+<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
+<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: categories/:title/test.jpg</code>这样的写法并不有效。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>图片显示</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo与typora图片显示问题</title>
     <url>/Hexo/hexo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>可以说是困扰了将近两年的问题，终于被解决了！</p>
@@ -313,32 +337,8 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+        <tag>图片显示</tag>
         <tag>typora</tag>
-        <tag>图片显示</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next主题在首页显示图片</title>
-    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
-<span id="more"></span>
-
-<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
-<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
-<img src="/image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
-
-<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
-<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: categories/:title/test.jpg</code>这样的写法并不有效。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>图片显示</tag>
       </tags>
   </entry>
   <entry>
