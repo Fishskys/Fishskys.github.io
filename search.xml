@@ -203,15 +203,19 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install gulp -g</span><br><span class="line">npm install gulp-minify-css --save</span><br><span class="line">npm install gulp-uglify --save</span><br><span class="line">npm install gulp-htmlmin --save</span><br><span class="line">npm install gulp-htmlclean --save</span><br><span class="line">npm install gulp-imagemin --save</span><br></pre></td></tr></table></figure>
 
 <p>在blog根目录新建文件gulpfile.js，写入</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">&#x27;gulp-minify-css&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlclean&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> imagemin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-imagemin&#x27;</span>);</span><br><span class="line"><span class="comment">//var imageminGifsicle = import(&#x27;imagemin-gifsicle&#x27;);</span></span><br><span class="line"><span class="comment">//var imageminMozjpeg = import(&#x27;imagemin-mozjpeg&#x27;);</span></span><br><span class="line"><span class="comment">//var imageminOptipng = import(&#x27;imagemin-optipng&#x27;);</span></span><br><span class="line"><span class="comment">//var imageminSvgo = import(&#x27;imagemin-svgo&#x27;);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩html</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-html&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/**/*.html&#x27;</span>)</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin(&#123;</span><br><span class="line">            <span class="attr">removeComments</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyJS</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyCSS</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyURLs</span>: <span class="literal">true</span>,</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩css</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-css&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/**/*.css&#x27;</span>)</span><br><span class="line">        .pipe(minifycss(&#123;</span><br><span class="line">            <span class="attr">compatibility</span>: <span class="string">&#x27;ie8&#x27;</span></span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩js</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/js/**/*.js&#x27;</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩图片</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-images&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/images/**/*.*&#x27;</span>)</span><br><span class="line">        .pipe(imagemin(</span><br><span class="line">        <span class="comment">//imageminGifsicle (&#123;&#x27;optimizationLevel&#x27;: 3&#125;), </span></span><br><span class="line">        <span class="comment">//imageminMozjpeg(&#123;&#x27;progressive&#x27;: true&#125;), </span></span><br><span class="line">       <span class="comment">// imageminOptipng(&#123;&#x27;optimizationLevel&#x27;: 7&#125;), </span></span><br><span class="line">       <span class="comment">// imageminSvgo()],</span></span><br><span class="line">        &#123;<span class="string">&#x27;verbose&#x27;</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public/images&#x27;</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 默认任务【gulp4写法】</span></span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>,gulp.parallel( <span class="string">&#x27;minify-html&#x27;</span>,<span class="string">&#x27;minify-css&#x27;</span>,<span class="string">&#x27;minify-js&#x27;</span>,<span class="string">&#x27;minify-images&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">&#x27;gulp-minify-css&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlclean&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-imagemin&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imageminGifsicle = <span class="built_in">require</span>(<span class="string">&#x27;imagemin-gifsicle&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imageminMozjpeg = <span class="built_in">require</span>(<span class="string">&#x27;imagemin-mozjpeg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imageminOptipng = <span class="built_in">require</span>(<span class="string">&#x27;imagemin-optipng&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imageminSvgo = <span class="built_in">require</span>(<span class="string">&#x27;imagemin-svgo&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩html</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-html&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/**/*.html&#x27;</span>)</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin(&#123;</span><br><span class="line">            <span class="attr">removeComments</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyJS</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyCSS</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">minifyURLs</span>: <span class="literal">true</span>,</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩css</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-css&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/**/*.css&#x27;</span>)</span><br><span class="line">        .pipe(minifycss(&#123;</span><br><span class="line">            <span class="attr">compatibility</span>: <span class="string">&#x27;ie8&#x27;</span></span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩js</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/js/**/*.js&#x27;</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩图片</span></span><br><span class="line">gulp.task(<span class="string">&#x27;minify-images&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&#x27;./public/images/**/*.*&#x27;</span>)</span><br><span class="line">        .pipe(imagemin([</span><br><span class="line">        imageminGifsicle (&#123;<span class="string">&#x27;optimizationLevel&#x27;</span>: <span class="number">3</span>&#125;), </span><br><span class="line">        imageminMozjpeg(&#123;<span class="string">&#x27;progressive&#x27;</span>: <span class="literal">true</span>&#125;), </span><br><span class="line">        imageminOptipng(&#123;<span class="string">&#x27;optimizationLevel&#x27;</span>: <span class="number">7</span>&#125;), </span><br><span class="line">        imageminSvgo()],</span><br><span class="line">        &#123;<span class="string">&#x27;verbose&#x27;</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public/images&#x27;</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 默认任务【gulp4写法】</span></span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>,gulp.parallel( <span class="string">&#x27;minify-html&#x27;</span>,<span class="string">&#x27;minify-css&#x27;</span>,<span class="string">&#x27;minify-js&#x27;</span>,<span class="string">&#x27;minify-images&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>因为不可知原因一直error，所以压缩图片部分代码被我注释掉了</p>
+<p>运行会一直error，降低imagemin版本解决，原本是8.0.0，降到7.1.0就可以可了</p>
 <img src="image-20230705180602479.png" alt="image-20230705180602479" style="zoom:50%;" />
 
-<p>不过实测可用</p>
+<p>实测可用</p>
 <img src="image-20230705180635290.png" alt="image-20230705180635290" style="zoom:50%;" />
 
+<p>不过可以注意到，这部分代码只压缩了<code>public\image\</code>的图片，如果<code>hexo_config</code>中<code>post_asset_folder: true</code>的话，文章的图片会保存在各自的同名文件夹中，因此要修改部分代码，参考一下<a href="https://blog.csdn.net/wildye/article/details/80516847">Gulp .src() 匹配模式详解</a>这个匹配模式，稍加修改，使得可以匹配public下所有gif，png，jpg，jepg，svg格式的图片</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;minify-images&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&#x27;./public/**/*.gif&#x27;</span>,<span class="string">&#x27;./public/**/*.png&#x27;</span>,<span class="string">&#x27;./public/**/*.jpg&#x27;</span>,<span class="string">&#x27;./public/**/*.jepg&#x27;</span>,<span class="string">&#x27;./public/**/*.svg&#x27;</span>])</span><br><span class="line">        .pipe(imagemin([</span><br><span class="line">        imageminGifsicle (&#123;<span class="string">&#x27;optimizationLevel&#x27;</span>: <span class="number">3</span>&#125;), </span><br><span class="line">        imageminMozjpeg(&#123;<span class="string">&#x27;progressive&#x27;</span>: <span class="literal">true</span>&#125;), </span><br><span class="line">        imageminOptipng(&#123;<span class="string">&#x27;optimizationLevel&#x27;</span>: <span class="number">7</span>&#125;), </span><br><span class="line">        imageminSvgo()],</span><br><span class="line">        &#123;<span class="string">&#x27;verbose&#x27;</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./public/images&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<p>效果如下图</p>
+<img src="image-20230714181653983.png" alt="image-20230714181653983" style="zoom:50%;" />
 
 <h4 id="7-3-翻页按钮"><a href="#7-3-翻页按钮" class="headerlink" title="7.3 翻页按钮"></a>7.3 翻页按钮</h4><p>设置背景后，由于翻页部分背景默认透明且按钮透明，所以要修改一下按钮部分。</p>
 <p>在<code>styles.styl</code>中添加以下内容</p>
@@ -277,6 +281,39 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo与typora图片显示问题</title>
+    <url>/Hexo/hexo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>可以说是困扰了将近两年的问题，终于被解决了！</p>
+<span id="more"></span>
+
+<p>在我昨天开始写重拾hexo这篇博客的时候，我提到了这个图片显示问题，主要原因是<strong>二者相对路径不统一</strong>。</p>
+<p>在旧hexo2上，大多博主采用下载插件方式解决问题，即hexo-asset-image的方式，但随着hexo的更新，hexo-asset-image已经失效，而且官方给出新的嵌入图片的方式。</p>
+<img src="image-20230630150252331.png" alt="image-20230630150252331" style="zoom: 67%;" />
+
+<p>经我几番查找，终于找到一个完美的解决方案<a href="https://zhuanlan.zhihu.com/p/265077468">hexo博客如何插入图片 - 知乎 (zhihu.com)</a></p>
+<p>首先，按照官方方式将post_asset_folder设置为true，这会使hexo创建新文章时同时在相同目录下创建同名文件夹。</p>
+<p>然后在typore的偏好设置中这样设置：</p>
+<img src="image-20230630150637228.png" alt="image-20230630150637228" style="zoom:67%;" />
+
+<p>这样，在插入图片时就会放入hexo生成的那个文件夹中了。</p>
+<p>最后，在typora-格式-图像-设置图片根目录为hexo生成的文件夹，就能保持hexo和typora二者相对路径保持一致了，完美！</p>
+<p>每个文件都要手动设置根目录是绝对不行的，在最后一步中，我们可以发现，设置完根目录后，只是在md文件的开头部分新增了typora-root-url: 根目录，因此，我们可以将其添加进模板中，即进入scaffolds文件夹，进入post.md，添加一行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typora-root-url: &#123;&#123; title &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，算是彻底解决了这个长久以来的问题。</p>
+<hr>
+<p>发现了个小问题，在直接复制时，typora总会在路径保留一个“/”，不去掉的话，在hexo上无法预览，下面就是一个例子。</p>
+<img src="/usb-1688110147484.jpg" alt="usb" style="zoom:67%;" />]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>图片显示</tag>
+        <tag>typora</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++期末笔记</title>
     <url>/SJTU/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>程序设计思想与方法-期末复习</p>
@@ -334,39 +371,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo与typora图片显示问题</title>
-    <url>/Hexo/hexo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>可以说是困扰了将近两年的问题，终于被解决了！</p>
-<span id="more"></span>
-
-<p>在我昨天开始写重拾hexo这篇博客的时候，我提到了这个图片显示问题，主要原因是<strong>二者相对路径不统一</strong>。</p>
-<p>在旧hexo2上，大多博主采用下载插件方式解决问题，即hexo-asset-image的方式，但随着hexo的更新，hexo-asset-image已经失效，而且官方给出新的嵌入图片的方式。</p>
-<img src="image-20230630150252331.png" alt="image-20230630150252331" style="zoom: 67%;" />
-
-<p>经我几番查找，终于找到一个完美的解决方案<a href="https://zhuanlan.zhihu.com/p/265077468">hexo博客如何插入图片 - 知乎 (zhihu.com)</a></p>
-<p>首先，按照官方方式将post_asset_folder设置为true，这会使hexo创建新文章时同时在相同目录下创建同名文件夹。</p>
-<p>然后在typore的偏好设置中这样设置：</p>
-<img src="image-20230630150637228.png" alt="image-20230630150637228" style="zoom:67%;" />
-
-<p>这样，在插入图片时就会放入hexo生成的那个文件夹中了。</p>
-<p>最后，在typora-格式-图像-设置图片根目录为hexo生成的文件夹，就能保持hexo和typora二者相对路径保持一致了，完美！</p>
-<p>每个文件都要手动设置根目录是绝对不行的，在最后一步中，我们可以发现，设置完根目录后，只是在md文件的开头部分新增了typora-root-url: 根目录，因此，我们可以将其添加进模板中，即进入scaffolds文件夹，进入post.md，添加一行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typora-root-url: &#123;&#123; title &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>至此，算是彻底解决了这个长久以来的问题。</p>
-<hr>
-<p>发现了个小问题，在直接复制时，typora总会在路径保留一个“/”，不去掉的话，在hexo上无法预览，下面就是一个例子。</p>
-<img src="/usb-1688110147484.jpg" alt="usb" style="zoom:67%;" />]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>图片显示</tag>
-        <tag>typora</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于Arduino的智能物流小车</title>
     <url>/SJTU/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E7%89%A9%E6%B5%81%E5%B0%8F%E8%BD%A6/</url>
     <content><![CDATA[<p><em>工程实践项目：基于Arduino板的智能物流小车</em></p>
@@ -388,58 +392,6 @@
       <tags>
         <tag>Arduino</tag>
         <tag>物流小车</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每天涨一点知识</title>
-    <url>/%E9%9A%8F%E7%AC%94/%E6%AF%8F%E5%A4%A9%E6%B6%A8%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>每天涨一点知识</p>
-<span id="more"></span>
-
-<h2 id="1-关于网页www前缀的问题"><a href="#1-关于网页www前缀的问题" class="headerlink" title="1.关于网页www前缀的问题"></a>1.关于网页www前缀的问题</h2><p>​        在输入豆瓣电影网址（movie.douban.com）的时候我在地址栏输入”<a href="http://www.movie.douban.com“,/">www.movie.douban.com“，</a> 意外的是，竟然无法访问，尝试重新输了几次，还是不行。后来尝试着把www去掉，就能正常访问了。</p>
-<p>​        在这之前，在我的认知里，“www”在输网址的时候都是可有可无的存在，访问结果都是一样的，但这件事告诉我并没有这么简单。所以我去搜索了一下。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/364693787">网址需要加www吗？ - 知乎 (zhihu.com)</a></p>
-<p><a href="https://www.zhihu.com/question/20414602">为什么越来越多的网站域名不加「www」前缀？ - 知乎 (zhihu.com)</a></p>
-<p>​        果然，又是日常容易被忽略的东西呢。</p>
-<h2 id="2-爬虫爬取网页遇到”-xa0”怎么办"><a href="#2-爬虫爬取网页遇到”-xa0”怎么办" class="headerlink" title="2.爬虫爬取网页遇到”\xa0”怎么办"></a>2.爬虫爬取网页遇到”\xa0”怎么办</h2><p><a href="https://www.cnblogs.com/yqpy/p/8203783.html">python如何去掉字符串‘\xa0’ - 嶙羽 - 博客园 (cnblogs.com)</a></p>
-<p><a href="https://blog.csdn.net/thewindkee/article/details/79890207">(7条消息) python 爬虫爬取内容时， \xa0 、 \u3000 的含义与处理方法_thewindkee的博客-CSDN博客_\xa0\xa0</a></p>
-<h2 id="3-python-整个列表的数据类型转换"><a href="#3-python-整个列表的数据类型转换" class="headerlink" title="3.python 整个列表的数据类型转换"></a>3.python 整个列表的数据类型转换</h2><p>在使用线性回归算法预测气温时，发现从网页上爬取的温度是str类型的，需要转换成num类型，尝试了以下方法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">        j = <span class="built_in">float</span>(j)</span><br></pre></td></tr></table></figure>
-
-<p>但是并没有用。</p>
-<p>感觉使用for循环一个一个元素去强制转换会有点复杂，我尝试上网搜了一下，能不能直接转换整个列表元素类型的函数。</p>
-<p><a href="https://blog.csdn.net/chinacmt/article/details/68488918">(7条消息) python修改list中所有元素类型_chinacmt的博客-CSDN博客_python改变list中的类型</a></p>
-<p>这篇博客详细介绍了三种方法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = <span class="built_in">list</span>()</span><br><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    new.append(<span class="built_in">int</span>(x))</span><br><span class="line"><span class="built_in">print</span>(new)</span><br></pre></td></tr></table></figure>
-
-<p>这种方法最容易想到，就是一个一个转换，但是，对于二维的列表（有一定结构）不好使</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
-
-<p>这个对于二维及以上的也有用，而且不会破坏原有的结构</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = <span class="built_in">map</span>(<span class="built_in">int</span>, a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    <span class="built_in">print</span>(i, <span class="built_in">type</span>(i))</span><br></pre></td></tr></table></figure>
-
-<p>这种方法同样也只适用于一维结构，而且，map的返回值是map object，需要强制转换成list</p>
-<p>我想了一下，第三种方法配合for循环也能实现高维结构</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">new1 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(new)):</span><br><span class="line">    new1.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">float</span>, new[i])))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<p>这样确实不会破坏原有的结构，但是也确实麻烦，还是用第二种方法吧</p>
-<h2 id="4-阿里云盘秒传"><a href="#4-阿里云盘秒传" class="headerlink" title="4.阿里云盘秒传"></a>4.阿里云盘秒传</h2><p>再阿里云盘上传文件时，发现有些1G多的文件竟然瞬间（不夸张）就上传完成了，一开始我还以为是刚下载的文件的文件上唇速度很快，然后搜了一下，发现并不是：</p>
-<p><a href="https://developer.aliyun.com/article/42506">【转】烂泥：网盘的秒传原理-阿里云开发者社区 (aliyun.com)</a></p>
-<h2 id="5-安装Ubuntu时遇到的问题"><a href="#5-安装Ubuntu时遇到的问题" class="headerlink" title="5.安装Ubuntu时遇到的问题"></a>5.安装Ubuntu时遇到的问题</h2><p>安装界面太小导致继续等按钮显示不出来，按住win键＋鼠标左键可以拖动窗口</p>
-<h2 id="6-pak文件"><a href="#6-pak文件" class="headerlink" title="6.pak文件"></a>6.pak文件</h2><p>在翻wildlif时发现了游戏所占的大部分空间为一个pak类型的文件，这是一个压缩类型的文件，游戏用的比较多，比如植物大战僵尸</p>
-<p><a href="https://zhuanlan.zhihu.com/p/400950006">Pak文件格式说明 - 知乎 (zhihu.com)</a></p>
-<h2 id="7-如何使某个文件夹内的图片不被显示在相册里？"><a href="#7-如何使某个文件夹内的图片不被显示在相册里？" class="headerlink" title="7.如何使某个文件夹内的图片不被显示在相册里？"></a>7.如何使某个文件夹内的图片不被显示在相册里？</h2><p>很多游戏内图片被扫描进去，多达几千张，显得很乱。</p>
-<p>解决方法：在不想被扫描的文件夹里创建一个名为“.nomedia”的空文件夹即可。</p>
-<p>此方法对视频、音频同样有效，但对安装包等其它文件没有用。</p>
-<p><a href="https://blog.csdn.net/qq_39994562/article/details/107310118">(7条消息) android 图片保存到文件夹中 但不在本地图库中显示_王虫虫就爱吃的博客-CSDN博客</a></p>
-<p>2022/7/21更新</p>
-<p>.nomedia文件夹功能似乎失效，但创建.nomedia文件仍可用（使用第三方文件管理器如mt，es等</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -653,6 +605,272 @@
       </categories>
       <tags>
         <tag>心理健康</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杭州游记</title>
+    <url>/%E9%9A%8F%E7%AC%94/%E6%9D%AD%E5%B7%9E%E6%B8%B8%E8%AE%B0/</url>
+    <content><![CDATA[<p> 7月22、23两天去了杭州，恰逢大雨。</p>
+<span id="more"></span>
+
+<p>上海离杭州还是蛮近的，快一点的高铁不到一个小时就到了，票价70多点。很久没有6点多起床了，这时候清晨的校园里基本没什么人。15号线的6号口貌似是这学期才开通的吧，正好在我们学校的墙外，离凯旋门相当近，可以说是方便不少。毕竟之前没有近的地铁口，5号线和15号线都要挺远的。15号线上平日里人也不多，而且紫竹高新区是首发站，所以可以坐到上海南站。</p>
+<p>40分钟后就到了上海南站，见到了复旦的一个同学，今天是我们三个去杭州找浙大的一个同学。</p>
+<p>浙大的一个门颇不像大学的门，就是马路中间开的进出学校的棚子，浙大的校医院也在那里。不过，转起来，感觉浙大就真的和城市融为一体了，像在城市的街道里一样，唯一的区别可能就是人少一点。</p>
+<img src="image-20230725105533032.png" alt="偶遇痛车" style="zoom: 50%;" />
+
+<p>因为太过融合，总觉得校园里有几个建筑像超商一样哈哈（某图书馆和某食堂）。校园里的建筑配色并不统一，有部分是青色，有部分则是红砖色。我们骑着车，走马观花式的游览了一圈浙大。</p>
+<p>下午则是去了杭州动物园，斥巨资10元买了“通行证”。</p>
+<img src="image-20230725110122531.png" alt="image-20230725110122531" style="zoom:50%;" />
+
+<p>动物园里的物种还是蛮丰富的，可惜的是我们还没来的及逛多久就下起了大雨，雷声带着大雨倾泻下来，尽管撑着伞，但是鞋还是被雨水溅湿，相当难受。等雨稍小了，我们又逛了小兽圆，见到了一些🦊和臭鼬之类的，不得不说，这个蓝狐是真的好看，可惜没拍到真身。</p>
+<img src="image-20230725110701931.png" alt="image-20230725110701931" style="zoom:50%;" />
+
+<img src="image-20230725111837502.png" alt="image-20230725111837502" style="zoom:67%;" />
+
+<p>看了天气预报，接下来一个小时不会再次下雨，于是我们匆匆离开了动物园，决定徒步前往附近的西湖。穿着湿鞋走路真是不爽。</p>
+<p>西湖很大很美，不过我们没赶上好时机，不仅没看到西湖十景，在走到堤坝中间的时候又又又又下起了大雨，本来快干的鞋子又湿了，相当难受。哎，晚上用吹风机吹了好久，还是没吹完全干。</p>
+<img src="image-20230725111859762.png" alt="image-20230725111859762" style="zoom:67%;" />
+
+<p>第二天决定去钱塘江看一看。钱塘江不在涨潮期，只能看到平静的江面和雨后的钓鱼佬。要是能看到钱塘江的潮水，那就别有一番风味了。</p>
+<img src="image-20230725114226526.png" alt="image-20230725114226526" style="zoom:67%;" />
+
+<p>下午就去了市区一个大型商业区域in77，又一次见证了杭州的天气无常。其时阳光明媚，路口行人熙熙攘攘，我们正走在路上。下一秒，突然人群有点骚动，雨水滴到了我的脸上，我连忙跟着人群到店铺的屋檐下躲雨。不到五秒的时间就从阳光明媚变为大雨瓢泼，说天气无常真不过分，来了两天就能体会到杭州的典型天气，不知我们是幸运还是不幸呢。</p>
+<p>中午饭时，在in77E区等了2个小时，为了尝尝这4.8评分的许府牛到底如何，结果就是狠狠踩雷了，体验极差。等待时间过长、牛肉口感很老、调料过少只有一些辣椒、葱花、香菜、耗油等等，甚至麻酱都要另外的价钱，真够难绷的。</p>
+<p>写着写着就越感绝像流水账一样，就到这里吧。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>杭州</tag>
+        <tag>西湖</tag>
+        <tag>钱塘江</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树莓派使用BLE蓝牙收发数据</title>
+    <url>/%E8%93%9D%E7%89%99/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8BLE%E8%93%9D%E7%89%99%E6%94%B6%E5%8F%91%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<p> 树莓派4b，蓝牙为WH-BLE103a，是一款有人物联网芯片，内置了天线。</p>
+<span id="more"></span>
+
+<img src="BLE.jpg" alt="BLE" style="zoom:80%;" />
+
+<p>这个芯片到手多天了，最初使用手机和windows端的蓝牙调试都很正常连接，唯独树莓派不能连上，折腾多日，今天终于有了成果。</p>
+<p>手上的树莓派4b安装的是ubuntu20.02，跟普通的树莓派版本不太一样，因此网上的教程很多难以复现，遇到各种各样的问题。</p>
+<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><p>首先树莓派需要安装蓝牙服务的有关软件，这块板子bluez版本为5.53，blueman为蓝牙图形化的工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install bluetooth pi-bluetooth bluez blueman</span><br></pre></td></tr></table></figure>
+
+<p>WH-BLE103a蓝牙芯片可以通过串口进行一些设置，如设置名字、配对码、密码、波特率等等，默认名字为WH-BLE103，不需要密码，波特率为57600。指令部分可以参考这个说明文档<a href="https://datasheet.lcsc.com/lcsc/2002261032_USR-IOT-WH-BLE103_C488061.pdf">WH-BLE103说明书</a></p>
+<p>这里使用TTL转USB转接头直接和电脑连接，注意供电电压为3.3V。连接方式如下</p>
+<table>
+<thead>
+<tr>
+<th>USB-TTL模块</th>
+<th>WH-BLE103蓝牙模块</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RX</td>
+<td>UART_TX</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>UART_RX</td>
+</tr>
+<tr>
+<td>3V3</td>
+<td>VBAT</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+</tbody></table>
+<h3 id="2-连接蓝牙"><a href="#2-连接蓝牙" class="headerlink" title="2.连接蓝牙"></a>2.连接蓝牙</h3><p>在树莓派输入hciconfig查看蓝牙模块是否可用，看到hci0服务即可。</p>
+<img src="image-20230720165351018.png" alt="image-20230720165351018" style="zoom:67%;" />
+
+<h4 id="扫描周围蓝牙设备"><a href="#扫描周围蓝牙设备" class="headerlink" title="扫描周围蓝牙设备"></a>扫描周围蓝牙设备</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo hcitool lescan</span><br></pre></td></tr></table></figure>
+
+<p>看到需要的蓝牙mac信息后，ctrl+z停止扫描</p>
+<h4 id="连接BLE设备"><a href="#连接BLE设备" class="headerlink" title="连接BLE设备"></a>连接BLE设备</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gatttool -b 设备MAC地址 --interactive</span><br><span class="line">connect</span><br></pre></td></tr></table></figure>
+
+<p>连接成功后就可以和BLE设备进行数据交互了。</p>
+<img src="image-20230720165545183.png" alt="image-20230720165545183" style="zoom:67%;" />
+
+<h3 id="3-数据交互"><a href="#3-数据交互" class="headerlink" title="3.数据交互"></a>3.数据交互</h3><p>树莓派连接BLE设备后,可以通过gatttool或蓝牙编程接口来发送和接收数据。</p>
+<p>使用gatttool,主要是通过交互模式:</p>
+<h4 id="了解特征值"><a href="#了解特征值" class="headerlink" title="了解特征值"></a>了解特征值</h4><p>不过在那之前，我们要了解BLE蓝牙的特征值，以及如何获取特征值。以下是claude的回答</p>
+<blockquote>
+<p>BLE (Bluetooth Low Energy) 蓝牙特征值(Characteristics)是BLE协议中的一个重要概念。<br>BLE设备通过服务(Services)和特征值进行数据通信。<br>特征值可以理解为服务中的一个数据单元。<strong>每个特征值都有一个UUID作为标识</strong>,并包含了以下信息:</p>
+<ul>
+<li>特征值所包含的数据值(Value)</li>
+<li>描述符(Descriptors),对特征值进行说明或配置</li>
+<li>属性(Properties),定义特征值支持的操作(读、写、通知等)</li>
+</ul>
+<p>举个例子,一个BLE心率监测设备可能有一个心率测量服务(Heart Rate Service),其中包含心率计量特征值(Heart Rate Measurement Characteristic)。<br>这个特征值的UUID是00002A37-0000-1000-8000-00805f9b34fb。它的值就是当前的心率数值。<br>通过读写这个特征值,手机App就可以获取实时心率,或者设置监测参数。<br>所以简单来说,BLE特征值就是服务提供的一个数据单元,用于传输和交互数据。正确理解和使用特征值是开发BLE应用的关键。</p>
+</blockquote>
+<p>我们要收发数据，就要知道“收”和“发”的特征值的uuid，怎么获取呢</p>
+<p>在Linux下,可以使用蓝牙命令行工具gatttool,连接BLE设备后使用primary和characteristics命令获取服务和特征值:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">primary</span><br><span class="line">characteristics</span><br></pre></td></tr></table></figure>
+
+<img src="image-20230720165653212.png" alt="image-20230720165653212" style="zoom:67%;" />
+
+<p>知道这些特征值有什么用呢？</p>
+<blockquote>
+<p>根据你提供的这个BLE设备的characteristics信息,我可以做以下分析:</p>
+<ul>
+<li>0x0002: 设备名称服务(Device Name Service)的设备名称characteristic。 properties为0x20表示可读,用于读取设备名称。</li>
+<li>0x0006和0x0008: GAP服务(Generic Access Profile Service)中的外围设备首选连接参数characteristic。properties为0x4E表示可读写,用于协商主从设备的连接参数。</li>
+<li>0x000a: 电池服务(Battery Service)的电池电平characteristic。properties为0x02表示可通知,可以订阅通知获取电池电量信息。</li>
+<li>0x000d: 看起来是一个自定义服务的readable characteristic,可读取某种数据。</li>
+<li>0x0010: 同样是一个自定义服务的writable characteristic,可以写入数据控制设备。</li>
+</ul>
+<p>总结一下,根据UUID和properties可以判断出标准服务的一些基础characteristic,以及自定义服务可能的用途。但不确定的自定义服务需要参考开发文档才能确定。获取characteristics和分析它们的功能是开发BLE应用的关键第一步。</p>
+</blockquote>
+<p>也就是说，<strong>根据handle可以确定这些服务的功能</strong>，<strong>handle相当于是uuid（标识）的简化</strong>，我们可以通过这个句柄（handle）来操作特征值，而<strong>char properties就是特征值的属性</strong>，定义特征值支持的操作(读、写、通知等)。</p>
+<p>那么，后面的char value handle又有什么用呢？</p>
+<blockquote>
+<p>在BLE协议中,Characteristic包含两个相关的Handle(句柄)概念:</p>
+<ol>
+<li>Characteristic Declaration Handle<br>这是Characteristic声明处的Handle,用于唯一标识这个Characteristic,通常简称为Characteristic Handle。<br>例如在你给的例子中,0x0002、0x0006等都是Characteristic Declaration的Handle。</li>
+<li>Characteristic Value Handle<br>这是Characteristic的值对应的Handle,用于读写Characteristic的值,简称为Value Handle。<br>例如在你的例子中,0x0003、0x0007等都是Characteristic Value的Handle。<br>两者的区别和关系:</li>
+</ol>
+<ul>
+<li>Declaration Handle代表整个Characteristic,用于操作Characteristic。</li>
+<li>Value Handle代表Characteristic的值,用于直接读写值。</li>
+<li>Declaration Handle会指向Value Handle,客户端可以通过第一个找到后者。</li>
+<li>在操作时,需要先用Declaration Handle来Discover,再用Value Handle来读写。</li>
+</ul>
+<p>所以简单来说:</p>
+<ul>
+<li><strong>Characteristic Handle是Characteristic的标识符。</strong></li>
+<li><strong>Value Handle是实际存储值的位置。</strong></li>
+<li>通过第一个找到第二个,从而对Characteristic进行操作。</li>
+</ul>
+</blockquote>
+<p>也就是说我们实际操作时，是对Value Handle的值进行操作的</p>
+<h4 id="数据收发"><a href="#数据收发" class="headerlink" title="数据收发"></a>数据收发</h4><p>了解了上述内容，我们就知道该怎样收发数据了</p>
+<p>0x000d和0x0010分别是收和发数据的handle，而我们要操作的是0x000e和0x0011</p>
+<p>输入help，可以看到收发数据的指令</p>
+<img src="image-20230720175359198.png" alt="image-20230720175359198" style="zoom:67%;" />
+
+<p>例如，发送ffee</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char-write-req 0x0011 ffee</span><br></pre></td></tr></table></figure>
+
+<p>通过串口就可以看到发送的内容了（16进制）</p>
+<img src="image-20230720175649137.png" alt="image-20230720175649137" style="zoom:67%;" />
+
+<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>在连接蓝牙和收发数据的过程中，可能会遇到各种问题，这里简单写一些</p>
+]]></content>
+      <categories>
+        <category>蓝牙</category>
+      </categories>
+      <tags>
+        <tag>蓝牙</tag>
+        <tag>树莓派</tag>
+        <tag>BLE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每天涨一点知识</title>
+    <url>/%E9%9A%8F%E7%AC%94/%E6%AF%8F%E5%A4%A9%E6%B6%A8%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>每天涨一点知识</p>
+<span id="more"></span>
+
+<h2 id="1-关于网页www前缀的问题"><a href="#1-关于网页www前缀的问题" class="headerlink" title="1.关于网页www前缀的问题"></a>1.关于网页www前缀的问题</h2><p>​        在输入豆瓣电影网址（movie.douban.com）的时候我在地址栏输入”<a href="http://www.movie.douban.com“,/">www.movie.douban.com“，</a> 意外的是，竟然无法访问，尝试重新输了几次，还是不行。后来尝试着把www去掉，就能正常访问了。</p>
+<p>​        在这之前，在我的认知里，“www”在输网址的时候都是可有可无的存在，访问结果都是一样的，但这件事告诉我并没有这么简单。所以我去搜索了一下。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/364693787">网址需要加www吗？ - 知乎 (zhihu.com)</a></p>
+<p><a href="https://www.zhihu.com/question/20414602">为什么越来越多的网站域名不加「www」前缀？ - 知乎 (zhihu.com)</a></p>
+<p>​        果然，又是日常容易被忽略的东西呢。</p>
+<h2 id="2-爬虫爬取网页遇到”-xa0”怎么办"><a href="#2-爬虫爬取网页遇到”-xa0”怎么办" class="headerlink" title="2.爬虫爬取网页遇到”\xa0”怎么办"></a>2.爬虫爬取网页遇到”\xa0”怎么办</h2><p><a href="https://www.cnblogs.com/yqpy/p/8203783.html">python如何去掉字符串‘\xa0’ - 嶙羽 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://blog.csdn.net/thewindkee/article/details/79890207">(7条消息) python 爬虫爬取内容时， \xa0 、 \u3000 的含义与处理方法_thewindkee的博客-CSDN博客_\xa0\xa0</a></p>
+<h2 id="3-python-整个列表的数据类型转换"><a href="#3-python-整个列表的数据类型转换" class="headerlink" title="3.python 整个列表的数据类型转换"></a>3.python 整个列表的数据类型转换</h2><p>在使用线性回归算法预测气温时，发现从网页上爬取的温度是str类型的，需要转换成num类型，尝试了以下方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">        j = <span class="built_in">float</span>(j)</span><br></pre></td></tr></table></figure>
+
+<p>但是并没有用。</p>
+<p>感觉使用for循环一个一个元素去强制转换会有点复杂，我尝试上网搜了一下，能不能直接转换整个列表元素类型的函数。</p>
+<p><a href="https://blog.csdn.net/chinacmt/article/details/68488918">(7条消息) python修改list中所有元素类型_chinacmt的博客-CSDN博客_python改变list中的类型</a></p>
+<p>这篇博客详细介绍了三种方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = <span class="built_in">list</span>()</span><br><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    new.append(<span class="built_in">int</span>(x))</span><br><span class="line"><span class="built_in">print</span>(new)</span><br></pre></td></tr></table></figure>
+
+<p>这种方法最容易想到，就是一个一个转换，但是，对于二维的列表（有一定结构）不好使</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p>这个对于二维及以上的也有用，而且不会破坏原有的结构</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]</span><br><span class="line">b = <span class="built_in">map</span>(<span class="built_in">int</span>, a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    <span class="built_in">print</span>(i, <span class="built_in">type</span>(i))</span><br></pre></td></tr></table></figure>
+
+<p>这种方法同样也只适用于一维结构，而且，map的返回值是map object，需要强制转换成list</p>
+<p>我想了一下，第三种方法配合for循环也能实现高维结构</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new = [[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>], [<span class="string">&#x27;3&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">new1 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(new)):</span><br><span class="line">    new1.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">float</span>, new[i])))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>这样确实不会破坏原有的结构，但是也确实麻烦，还是用第二种方法吧</p>
+<h2 id="4-阿里云盘秒传"><a href="#4-阿里云盘秒传" class="headerlink" title="4.阿里云盘秒传"></a>4.阿里云盘秒传</h2><p>再阿里云盘上传文件时，发现有些1G多的文件竟然瞬间（不夸张）就上传完成了，一开始我还以为是刚下载的文件的文件上唇速度很快，然后搜了一下，发现并不是：</p>
+<p><a href="https://developer.aliyun.com/article/42506">【转】烂泥：网盘的秒传原理-阿里云开发者社区 (aliyun.com)</a></p>
+<h2 id="5-安装Ubuntu时遇到的问题"><a href="#5-安装Ubuntu时遇到的问题" class="headerlink" title="5.安装Ubuntu时遇到的问题"></a>5.安装Ubuntu时遇到的问题</h2><p>安装界面太小导致继续等按钮显示不出来，按住win键＋鼠标左键可以拖动窗口</p>
+<h2 id="6-pak文件"><a href="#6-pak文件" class="headerlink" title="6.pak文件"></a>6.pak文件</h2><p>在翻wildlif时发现了游戏所占的大部分空间为一个pak类型的文件，这是一个压缩类型的文件，游戏用的比较多，比如植物大战僵尸</p>
+<p><a href="https://zhuanlan.zhihu.com/p/400950006">Pak文件格式说明 - 知乎 (zhihu.com)</a></p>
+<h2 id="7-如何使某个文件夹内的图片不被显示在相册里？"><a href="#7-如何使某个文件夹内的图片不被显示在相册里？" class="headerlink" title="7.如何使某个文件夹内的图片不被显示在相册里？"></a>7.如何使某个文件夹内的图片不被显示在相册里？</h2><p>很多游戏内图片被扫描进去，多达几千张，显得很乱。</p>
+<p>解决方法：在不想被扫描的文件夹里创建一个名为“.nomedia”的空文件夹即可。</p>
+<p>此方法对视频、音频同样有效，但对安装包等其它文件没有用。</p>
+<p><a href="https://blog.csdn.net/qq_39994562/article/details/107310118">(7条消息) android 图片保存到文件夹中 但不在本地图库中显示_王虫虫就爱吃的博客-CSDN博客</a></p>
+<p>2022/7/21更新</p>
+<p>.nomedia文件夹功能似乎失效，但创建.nomedia文件仍可用（使用第三方文件管理器如mt，es等</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红米Note12Turbo上手体验与真我GTNeo对比</title>
+    <url>/%E6%9D%82%E8%B0%88/%E7%BA%A2%E7%B1%B3Note12Turbo%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C%E4%B8%8E%E7%9C%9F%E6%88%91GTNeo%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<p>这两天入手了红米Note12Turbo，在更换手机和使用过程中有不少感触，拿出来讲一讲。</p>
+<span id="more"></span>
+
+<p>原手机是真我GTNeo闪速版12+256的版本，21年暑假买的，没记错的话应该是2000出头的价格。闪速版和普通版的参数基本一致，除了屏幕和电池稍有不同，闪速版的充电要快一点，是65w快充，这个快充放当年是相当领先的了，毕竟两年后手上的这台红米也只有67w快充。</p>
+<p>参数对比什么的我就不一一陈述了，可以参考这个<a href="https://detail.zol.com.cn/ProductComp_param_1371871-1490492.html">真我 GT Neo 闪速版（12GB/256GB/全网通/5G版）和红米 Note 12 Turbo（12GB/512GB）【参数对比】</a>，我主要讲一下体验部分。</p>
+<p>真我是在近乎首发的时候买的，据说这个机子在22年初就已经降到了1300+（8+256）的程度，确实有点让人意外。手上的红米倒不是首发买的，这台手机是3月份发布的，经过4个月的时间，风评不错，在多方参考之后，决定入手。到手的是12+512版本的，说实话，我对16+1T版本的很是心动，但是考虑到预算和需求问题，还是选择了12+512的。</p>
+<p>原本的真我经过两年的使用，卡顿和续航有点问题，中间也因为摔坏而更换了一次屏幕，因为是内屏摔坏的，所以更换了整块屏幕。但是当时的官方给出的屏幕价格是800+，已经快赶上二手整机的价格了，所以就换了一块100多的第三方屏幕，而代价呢，就是120hz刷新率变为了90hz，而且没有了屏下指纹识别。卡顿的感受可能不少也缘于这个刷新率，不过更多还是手机本身的问题，在我的各种折腾下，256G存储还是不太够用了，在加上天玑1200的处理器放到现在的表现确实不太行，所以在日常使用体验上，卡顿是常有的，尤其是在播放高码率视频的时候，长按倍速画面就停滞不动了，其它诸如打开app，各种点击等都能感受到流畅度大不如前。此外，续航也是一个问题，犹记得刚买的时候，一天充一次电还是够的，现在呢，早上满电，中度使用的情况下，到了下午1-2点的时候基本就没电了，一天要充2-3次。指纹和发热相比上面倒是小问题了。没有了指纹，改用人脸识别，除了在晚上没光的时候不能识别外，基本没什么问题，还有一些支付软件以及银行的登录也有不方便之处。第三方的屏幕有些发热不均，明显下1/3的地方发热会更严重，不过本来到了夏天手机都会烫手，这个问题倒也被掩盖了。</p>
+<p>红米Note12Turbo我买的是冰羽白的配色，说实话，颜值真的很高，虽然到手我就换上了手机壳，但是它的颜值确实高，背面不是纯白，而是像结冰一样的纹理，这个后背让我很满意。</p>
+<img src="5102e417695862a3d879824caedbb78c.jpg" alt="冰羽白" style="zoom:50%;" />
+
+<p>这台红米处理器是骁龙7+gen2的，名为7+gen2，实际为低配版8+，因为架构基本相同，均为1+3+4，不同点为大中核的频率稍低，以及砍掉了2MB的缓存，看了几个评测后，比较满意这块处理器的表现，能效比相当不错，这也是买这台机子的重要原因之一。在618之前，我看上的是iqoo neo7se，12+256的配置，搭载天玑8200，看了很久，在615的时候价格来到了1509，性价比很高了，但是最终没有买。如今价格在1600+接近1700，比较了下两台机子，200多换来性能和能效都更好的处理器、256g存储以及和平板的联动还是不错的。</p>
+<img src="image-20230716134213902.png" alt="image-20230716134213902" style="zoom:67%;" />
+
+<p>到手验完机后，首先来一次手机搬家。消息称小米联合蓝绿厂组建了“换机联盟”，支持包括各自品牌以及子品牌如红米、iqoo、realme在内的手机迁移数据，包括第三方应用数据，无疑是很好的消息，但实际体验下来，这个换机功能依然存在bug。在小米换机和欢太手机搬家版本满足官网要求的版本下，我的真我手机中的第三方应用数据依然不能迁移到这台红米上，具体表现为虽然确有授权迁移第三方应用数据，但是到迁移第三方应用数据时进度完全卡住不动，长达4个小时。结果就是我手动取消，包括微信和qq聊天记录在内的所有第三方应用数据全部不能传输，我使用了微信和qq的聊天记录迁移功能，其它应用数据无奈留在原手机。</p>
+<img src="f04c703f5477a7251f80351443aaae61.jpg" alt="f04c703f5477a7251f80351443aaae61" style="zoom:50%;" />
+
+<p>在第二天我询问相关客服时，真我客服甩锅，表示你换红米手机就该去问红米手机客服去，小米客服含糊其辞，不能解决问题，体验较差。</p>
+<p>在原手机恢复出厂设置的过程中，也体验到真我系统的部分槽点。首先是，手机备份不能备份第三方应用数据，那备份软件还有何用？相比之下，看了眼MIUI的备份，还是可以备份第三方应用数据的。既然如此那确实没办法了，我就备份了原手机能备份的所有数据。其次是，便签内容不能导出，原手机的便签存了较多重要内容，但是真我的便签却不能导出，最终选择了云同步来解决。不过这个并不只是真我的问题，MIUI也是不能导出和导入便签的，不知其它厂商如何。但是无论如何，用户端的最终体验是不好的，不止我一个人有迁移便签的需求，在网上也找到了同样的真我用户的诉求，时隔将近两年，官方依然没有做出这方面的改进。</p>
+<p>比较好的地方是，真我的云同步可以同步相册、WLAN、密码本等，还是有利于恢复出厂设置后的数据恢复的。在导入备份的过程中，我发现了它会保留和原先相同的桌面图标排布，这点还是很可以的。系统设置也可以大致恢复，有一些除外，例如手机的音效、铃声设置、手机壁纸和字体设置。</p>
+<p>我并非第一次用小米的手机，上大学前的手机也是小米的一部4+64的，但是忘记了具体牌子。如今的MIUI系统变化还是挺大的，在上手这台MIUI14的红米时，也遇到不少优点和槽点。</p>
+<p>先说优点吧，首先是多应用媒体音调节的功能，这个是我盼望已久的功能，可惜真我一直没有做。动画也比真我要快一点，就显得流畅了点。本来想吐槽一下红米的这个拍照快捷手势的，它手势和真我的一样电源键+音量下键，但是问题在于，真我这两个按键是在两边，我右手拿手机可以一只手截屏，红米这两个按键都是在手机右侧，这就导致了我右手拿手机完全无法一只手截屏，这对习惯了这个按键组合人来讲真的很不方便。但是但是，MIUI有个自定义手势的功能，可以自定义的功能极多，包括微信、支付宝付款码、截图、相机、小爱等等，这可比那两个按键方便多了。</p>
+<img src="aea6efe3230b5e013cda0b470c7f6398.jpeg" alt="img" style="zoom:50%;" />
+
+<p>此外，这个传送门功能也是相当不错，任何地方长按都可以在侧边呼应出来，图片识别有扫码和识物功能，文本识别有搜索、分词复制和翻译，个人觉得实用性相当不错。</p>
+<img src="d01ca206d1003527e0d6b0af1a640d91.jpeg" alt="img" style="zoom:50%;" />
+
+<hr>
+<p>悲报，就在我写这文章时，又发现了痛苦的一件事。手机搬家也会忽略掉带有.nomedia文件的文件夹，这导致了我很多数据的丢失，而我现在才发现！</p>
+<hr>
+<p>接下来是槽点，主要有两类，一类槽点是属于习惯问题，另一类则是小米系统设计问题。习惯问题挺多的，诸如上边写的截图快捷键、以及下拉菜单分两边（这个可以在设置中切换）等</p>
+<p>其它槽点每一个都可以单独伶出来说一说，第一个也是最大的槽点：逆天的相册云同步。在打开相册云同步时，可以自由选择同步的相册，但是相机确实默认同步不能手动开关的，这就导致5G的空间被轻松占满，逼你去买它的空间。而且在云端删除照片时也会删除掉本地的图片，这个设置还没有一个明显的开关，只能通过断开设备与云的连接来解决，参考这个<a href="https://www.bilibili.com/video/BV1We4y1q7WD/?spm_id_from=333.337.search-card.all.click&vd_source=f6fe5f5f48937a5b52419e6dcaf2f1d9">miui13云相册清理，防止误删本地相片</a></p>
+<p>第二是自带的搜狗输入法定制版。在自己绘制皮肤时不能调整输入区域的宽度，它默认的宽度不一定就是适合的，这就导致后续设计完毕调整宽度时会导致图像比例失调。而且，自己绘制皮肤时不能调整字体粗细，出来的结果不甚满意。在调整工具栏时，不管怎么样最右侧都是一个广告，应用精选，很容易误触，找了半天也没找到在哪关掉，只得上网搜，结果竟然是叫”节日活动提醒“，伪装的有够逆天的。</p>
+<p>第三是有关主题的，我原本真我手机用的字体是Aa-楷体，但是小米的主题商店里并没有这款字体，就比较难受。切换到一个中意的字体后，没调整字体大小，视觉上却又比原本小了点，而且切换不到一个合适的大小，不是偏小就是偏大。文件夹的透明度相比真我高了点，视觉上就不是那么明显，这是一个适应的问题。</p>
+<p>还有一些小的槽点，比如自动亮度不是那么好用，在一些环境下偏暗，还要我手动调高亮度、小米妙享中心能实现的功能还很有限等等。</p>
+<hr>
+<p>今天出门吃饭又发现了指纹解锁如果设置为轻触解锁的话，放口袋里会有概率误触。</p>
+<hr>
+<p>目前的使用体验大致就这样。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>手机</tag>
+        <tag>手机系统</tag>
       </tags>
   </entry>
   <entry>
