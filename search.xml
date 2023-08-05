@@ -761,7 +761,20 @@
 <img src="image-20230720175649137.png" alt="image-20230720175649137" style="zoom:67%;" />
 
 <h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>在连接蓝牙和收发数据的过程中，可能会遇到各种问题，这里简单写一些</p>
-]]></content>
+<h4 id="0-查看蓝牙日志"><a href="#0-查看蓝牙日志" class="headerlink" title="0.查看蓝牙日志"></a>0.查看蓝牙日志</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo journalctl -u bluetooth -n 10</span><br></pre></td></tr></table></figure>
+
+<p>journalctl是Linux系统中管理日志的工具,具体作用如下:</p>
+<ul>
+<li>-u 参数表示查看指定服务的日志,这里我们查看蓝牙服务bluetooth的日志。</li>
+<li>sudo表示用root权限运行命令,查看系统日志通常需要root权限。</li>
+<li>bluetooth是蓝牙服务的系统服务名称。</li>
+<li>-n 参数表示查看最近多少条日志，可以不使用</li>
+</ul>
+<p>使用这个命令可以方便地过滤出蓝牙服务产生的日志,包括启动时的诊断信息、运行时的调试信息、错误日志等。</p>
+<h4 id="1-Error-connect-error-Function-not-implemented-38"><a href="#1-Error-connect-error-Function-not-implemented-38" class="headerlink" title="1.Error: connect error: Function not implemented (38)"></a>1.<code>Error: connect error: Function not implemented (38)</code></h4><img src="image-20230725151620659.png" alt="image-20230725151620659" style="zoom:67%;" />
+
+<p>这种情况不会反映到日志中</p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4>]]></content>
       <categories>
         <category>蓝牙</category>
       </categories>
@@ -1033,6 +1046,144 @@
       <tags>
         <tag>hexo</tag>
         <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小米使用体验（长期更新）</title>
+    <url>/%E6%9D%82%E8%B0%88/%E5%B0%8F%E7%B1%B3%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%EF%BC%88%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <content><![CDATA[<p> 记录一下小米产品的使用体验，随缘更新。</p>
+<span id="more"></span>
+
+<h3 id="2023-8-1"><a href="#2023-8-1" class="headerlink" title="2023.8.1"></a>2023.8.1</h3><p>想了一下，手上目前两台米家设备，又打算买一个小米手环，这样一来小米的设备多了，看来必须记录一下使用体验了。</p>
+<p>上手红米note12Turbo已经两个星期多了，当初讲了一些刚上手的体验，今天讲讲其它的。</p>
+<p>手机整体使用还是很不错的，这块处理器各项性能都很优秀。续航也可以，早上充满电，中度使用可以到下午7点还剩20的电，轻度使用一整天应该没问题。也放一个平板的跑分对比，平板处理器是8+。</p>
+<img src="2.jpg" alt="2" style="zoom:50%;" />
+
+<img src="3.jpg" alt="3" style="zoom:50%;" />
+
+<p>网易云音乐在锁屏时会专门有一个播放界面，背景是歌曲的封面之类，然后会有歌词，下面会有一个滑动解锁，但是，前两天不知什么原因，这个滑动解锁一直失效，只能从下边缘上划解锁。不过这个bug这两天又消失了，真不知道是MIUI还是网易云的锅。</p>
+<img src="1.jpg" alt="1" style="zoom:33%;" />
+
+<p>其它的bug暂时没有遇到，只是小米传送门的支持范围还是不够，比如edge浏览器还有一些其它场景用不了。</p>
+<p>接下来重点讲一下小米的设备互联，也就是小米妙享。小米妙享是只支持自家电脑的，但是民间自有大佬在。当初刚到手平板的时候浅尝试了一下，没有成功，前几天又试了一次，很顺利也很成功。</p>
+<p>主要参考这个<a href="https://www.bilibili.com/video/BV1iP411y7ob/">全网最简单！小米妙享安装方法_哔哩哔哩_bilibili</a>和<a href="https://www.coolapk.com/feed/42297337?shareKey=N2I4ZTc0YTk3YzA4NjRhZmU3NDU~&shareUid=23139762&shareFrom=com.coolapk.market_13.3">PC小米妙享安装+解锁流转补丁 来自 ChsBuffer - 酷安 (coolapk.com)</a>所以说玩机这块还得看酷安。</p>
+<img src="image-20230801105320045.png" alt="image-20230801105320045" style="zoom:50%;" />
+
+<p>各项功能基本正常，手机能传文件和屏幕投屏，在电脑连接了手机热点后，延迟和流畅度表现都很优秀，不足之处是画面清晰度不够，不过考虑到电脑和手机的分辨率和像素密度，倒也可以理解。</p>
+<p>连接平板功能更多，可以作为镜像和扩展屏，也可以键鼠共享。其中最有用的要数屏幕扩展了，也就是把平板作为副屏来使用 ，经过测试，刷新率会被限制在60hz，帧率在144hz，还行吧。键鼠共享体验还算合格，即使我笔记本用的是无线键鼠，这样共享过去几乎还是感受不到延迟，缺点是鼠标有点飘，部分原因是分辨率问题。</p>
+<img src="image-20230801105620460.png" alt="image-20230801105620460" style="zoom:50%;" />
+
+<p>其它功能音乐流转、应用接力都可以使用。</p>
+<p>接下来讲讲目前还存在的问题，</p>
+<p>1.首先是一键热点不能正常使用，也就是点了一键热点并不会一键帮你连接，还需要你手动到wifi界面去连接，不过这个我更倾向于是网卡的问题，这b联发科7921问题太多了，天热掉网卡、wifi有时候连不上，以后换个网卡再试试吧。</p>
+<p>2.音乐流转手机不能流转到平板上，这个好像是说手机不支持接力，但是手机和平板的音乐都可以流转到电脑上，唯独手机和平板之间不能互相流转，很怪。</p>
+<p>3.手机和平板与电脑流转时必须先连接设备且开热点给电脑，即使是处于同一网络。这个也很怪，手机和平版的互联就很方便，基本只要开启了WiFi就行，而电脑即使处于同一wifi下也不行，只能靠热点。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>小米</tag>
+        <tag>红米</tag>
+        <tag>MIUI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/uncategorized/%E6%B8%85%E6%BA%90/</url>
+    <content><![CDATA[<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
+<p><a href="https://item.szlcsc.com/24852.html">MPU-6050_（TDK InvenSense(应美盛)）MPU-6050中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/100740936">Arduino开发板使用MPU6050加速度计和陀螺仪的方法 - 知乎 (zhihu.com)</a></p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
+<p><a href="https://item.szlcsc.com/202245.html">BMI055_（Bosch(博世)）BMI055中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<h4 id="usb接口"><a href="#usb接口" class="headerlink" title="usb接口"></a>usb接口</h4><p><a href="https://zhuanlan.zhihu.com/p/447595295">秒懂所有USB接口类型，USB接口大全；Type-A、Type-B、Type-C、miniUSB、microUSB区分 - 知乎 (zhihu.com)</a></p>
+<h5 id="命名问题"><a href="#命名问题" class="headerlink" title="命名问题"></a>命名问题</h5><p><img src="/uncategorized/%E6%B8%85%E6%BA%90/usb.jpg" alt="usb"></p>
+<h5 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h5><p>标准USB接口：Type A，Type B支持USB1.0-3.2</p>
+<p>mini：mini A，mini B，仅支持到USB2.0</p>
+<p>Micro：Micro A，Micro B，支持到USB3.0</p>
+<p>Type C：从USB2.0-4.0</p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628141549844.png" alt="image-20230628141549844"></p>
+<h4 id="关于OTG"><a href="#关于OTG" class="headerlink" title="关于OTG"></a>关于OTG</h4><p><a href="https://zhuanlan.zhihu.com/p/454364494">手机OTG连接什么意思？都能实现哪些功能 - 知乎 (zhihu.com)</a></p>
+<p>OTG（On The Go，没有主机时的，端对端的数据传输，如相机直接与打印机连接而打印照片）功能是目前大多数智能手机的一个设计，具备这个功能的手机可通过使用OTG转接头或转接线连接其它设备。</p>
+<p>a:例如U盘，手机支持OTG、或者使用OTG转接头，然后就可以在手机上直接读取U盘文件。</p>
+<p>b:比较常见的支持USB的设备均可通过OTG方式进行连接，常见的比如键盘、手 机、游戏操作手柄等等。（手机键盘，鼠标等就是通过OTG方式连接）</p>
+<p>c:当外出在外，有些小设备（手环、智能手表、MP3等）没有电时，可以通过使用支持反向充电的专用OTG线连接手机进行充电。</p>
+<h4 id="什么是雷电4"><a href="#什么是雷电4" class="headerlink" title="什么是雷电4"></a>什么是雷电4</h4><p><a href="https://zhuanlan.zhihu.com/p/449978612">到底什么是雷电接口，这个接口有什么用？ - 知乎 (zhihu.com)</a></p>
+<p>雷电和HDMI、DP一样，都是一种传输协议，英文名为Thunderbolt。</p>
+<p>目前雷电3/4的接口形状和Type C口的形状相同。</p>
+<p>特别注意：不是所有的TypeC接口都是雷电接口，TypeC只是接口的规格和形态，而雷电是一种标准，两者没有必然关联，只不过现阶段雷电口是以C口的形式出现，并不意味着你电脑上有TypeC接口他就是雷电接口，主要标志物是看旁边有没有闪电标志。</p>
+<p>关于雷电接口的主要优势可以用两个词来形容：”<strong>全兼容</strong>“ “<strong>高带宽</strong>“。</p>
+<p>雷电3与雷电4的扩展坞都需要供电才能使用。</p>
+<p>雷电3雷电4，最高能够扩展出USB 3.2 Gen2（即USB3.1）接口 ，都还不支持USB3.2，可以扩展出DP1.4，HDMI2.1，PD供电，音频口，内存口，网线口，vga口接口等。</p>
+<h4 id="屏幕刷新率与传输带宽要求"><a href="#屏幕刷新率与传输带宽要求" class="headerlink" title="屏幕刷新率与传输带宽要求"></a>屏幕刷新率与传输带宽要求</h4><p><a href="https://zhuanlan.zhihu.com/p/638519560#">视频分辨率、刷新率和传输带宽之间的联系，你了解吗？ - 知乎 (zhihu.com)</a></p>
+<p>以4k 60hz为例：</p>
+<p>带宽要求：3840*2160(分辨率) *3(三个子像素) *8bit(位深，256) *60fps=11.12Gbps</p>
+<h4 id="Arduino-Uno"><a href="#Arduino-Uno" class="headerlink" title="Arduino Uno"></a>Arduino Uno</h4><p><a href="https://zhuanlan.zhihu.com/p/404917210">认识Arduino UNO - 知乎 (zhihu.com)</a></p>
+<h4 id="IIC-I2C通信协议"><a href="#IIC-I2C通信协议" class="headerlink" title="IIC/I2C通信协议"></a>IIC/I2C通信协议</h4><p><a href="https://zhuanlan.zhihu.com/p/503219395">IIC通信协议，搞懂这篇就够了 - 知乎 (zhihu.com)</a></p>
+<p>I2C(<strong>IIC</strong>)属于两线式串行总线，由飞利浦公司开发用于微控制器(MCU)和外围设备(从设备)进行通信的一种总线，属于<strong>一主多从(一个主设备(Master)，多个从设备(Slave))的总线结构</strong>，<strong>总线上的每个设备都有一个特定的设备地址，以区分同一I2C总线上的其他设备</strong>。</p>
+<h3 id="2023-6-29"><a href="#2023-6-29" class="headerlink" title="2023.6.29"></a>2023.6.29</h3><h4 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h4><p>使用原本的大传感器时有一个输出是欧拉角，网上查了查，看的云里雾里的。</p>
+<p><a href="https://www.zhihu.com/question/47736315">如何通俗地解释欧拉角？之后为何要引入四元数？ - 知乎 (zhihu.com)</a></p>
+<h4 id="立创EDA"><a href="#立创EDA" class="headerlink" title="立创EDA"></a>立创EDA</h4><p><a href="https://zhuanlan.zhihu.com/p/76736613">200 一步步开始学习制作PCB&amp;PCBA–绘制原理图 - 知乎 (zhihu.com)</a></p>
+<h4 id="九轴"><a href="#九轴" class="headerlink" title="九轴"></a>九轴</h4><p><a href="https://item.szlcsc.com/72567.html">MPU-9250_（TDK InvenSense(应美盛)）MPU-9250中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<p>ICM-20948</p>
+<p>三轴磁传感器</p>
+<p>QMC5883</p>
+<p><a href="https://item.szlcsc.com/391847.html">MMC5603NJ_（MEMSIC(美新)）MMC5603NJ中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<h3 id="2023-7-03"><a href="#2023-7-03" class="headerlink" title="2023.7.03"></a>2023.7.03</h3><p>今天画PCB板</p>
+<p>先放成果</p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230703145943612.png" alt="image-20230703145943612"></p>
+<p>几个注意事项：</p>
+<p>1.电源线要粗一点，这里用的是20mil，90°圆弧</p>
+<p>2.过不去的地方使用过孔。</p>
+<p>3.其余线用45°线条。</p>
+<h3 id="2023-07-10"><a href="#2023-07-10" class="headerlink" title="2023.07.10"></a>2023.07.10</h3><p>使用蓝牙将IMU数据传输到树莓派</p>
+<p>寻找贴片蓝牙模块ESP32-PICO-D4</p>
+<h3 id="2023-7-11"><a href="#2023-7-11" class="headerlink" title="2023.7.11"></a>2023.7.11</h3><p>找到新蓝牙模块<strong>WH-BLE103a</strong></p>
+<p>设计二合一（atmega328+蓝牙）PCB电路板和三合一（atmega328+蓝牙+IMU）PCB电路板</p>
+<img src="image-20230711175318786.png" alt="三合一" style="zoom:50%;" />
+
+<img src="image-20230711175333683.png" alt="二合一" style="zoom:50%;" />
+
+<h3 id="2023-07-18"><a href="#2023-07-18" class="headerlink" title="2023.07.18"></a>2023.07.18</h3><p>这么多天一直在调试这个蓝牙模块WH-BLE103a，手机和windows都能连接的上，就是树莓派死活连接不了，受不了了。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>bat脚本使用小tips</title>
+    <url>/%E9%9A%8F%E7%AC%94/bat%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%B0%8Ftips/</url>
+    <content><![CDATA[<p> 使用bat脚本时的一些小tips</p>
+<span id="more"></span>
+
+<p>1.echo off的作用</p>
+<p>参考这个，讲的很详细<a href="https://blog.csdn.net/qq_39071599/article/details/111477894">bat文件的@echo off是什么作用？_</a></p>
+<p>简单来讲就是，echo是回显的作用，会显示这条命令后的内容，而echo off就是关闭回显，但是不包括这条命令，@echo off就是关闭回显且包括这条命令</p>
+<p>2.在bat里调用其它bat</p>
+<p>两种方式，一种是call，在本bat窗口调用，另一种是start，会另开一个窗口</p>
+<p>这里以一个情景为例，在Desktop文件夹里我创建了test.bat文件，想要调用Desktop\test文件夹下三个bat文件，分别为1.bat,2.bat,3.bat，三个文件内容相同均为：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>由于没有加入pause，脚本会在迅速执行后自动关闭窗口</p>
+<p>那么我在test.bat文件中写入</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>期望的效果是，分别调用三个窗口，执行后自动关闭窗口，但是实际的效果是留下了三个窗口，如图</p>
+<img src="image-20230803233034468.png" alt="image-20230803233034468" style="zoom: 67%;" />
+
+<p>要想自动关闭这个窗口，在三个文件结尾加入exit即可。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，如果是一直执行的脚本，不能exit，但我们又不想手动去最小化每个窗口，那么，只要在test.bat的start后加入参数”/min”即可</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> /min <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>这样就会在启动新窗口时自动最小化了。其它可用的参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“title” 指定在“命令提示符”窗口标题栏中显示的标题。</span><br><span class="line">/dpatch 指定启动目录。</span><br><span class="line">/i 将 Cmd.exe 启动环境传送到新的“命令提示符”窗口。</span><br><span class="line">/min 启动新的最小化窗口。</span><br><span class="line">/max 启动新的最大化窗口。</span><br><span class="line">/separate 在单独的内存空间启动 16 位程序。</span><br><span class="line">/shared 在共享的内存空间启动 16 位程序。</span><br><span class="line">/low 以空闲优先级启动应用程序。</span><br><span class="line">/normal 以一般优先级启动应用程序。</span><br><span class="line">/high 以高优先级启动应用程序。</span><br><span class="line">/realtime 以实时优先级启动应用程序。</span><br><span class="line">/abovenormal 以超出常规优先级的方式启动应用程序。</span><br><span class="line">/belownormal 以低出常规优先级的方式启动应用程序。</span><br><span class="line">/wait 启动应用程序，并等待其结束。</span><br><span class="line">/b 启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用 CTRL+C，否则将忽略 CTRL+C 操作。使用 CTRL+BREAK 中断应用程序。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>bat</tag>
+        <tag>脚本</tag>
       </tags>
   </entry>
 </search>
