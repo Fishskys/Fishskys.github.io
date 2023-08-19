@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Arduino读取MPU-9250数据</title>
+    <url>/Arduino/Arduino%E8%AF%BB%E5%8F%96MPU-9250%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<p>Arduino与MPU-9250通过IIC实现数据传输并尝试使用蓝牙传输数据</p>
+<span id="more"></span>
+
+<p>在淘宝商家找的成品并仿照设计了外围电路和PCB板子，师兄焊了三个板子，好在有一个能用（可以看出芯片真的非常小，确实不好焊）</p>
+<p><img src="1.jpg" alt="1" style="zoom: 10%;" /><img src="2.jpg" alt="2" style="zoom:10%;" /></p>
+<p>参照网上的这篇文章[(17条消息) <a href="https://blog.csdn.net/Gregory24/article/details/90454735">MPU9250+Arduino/读取传感器数据</a>，跑了他的代码，幸运的可以跑通。这个教程和另外一篇csdn上的文案一模一样，我都不知道谁抄谁的，难绷。</p>
+<img src="image-20230707112603099.png" alt="image-20230707112603099" style="zoom:50%;" />
+
+<p>接下来的工作是搞懂代码，修改输出的数据形式，并用蓝牙传输。</p>
+]]></content>
+      <categories>
+        <category>Arduino</category>
+      </categories>
+      <tags>
+        <tag>Arduino</tag>
+        <tag>IMU</tag>
+        <tag>蓝牙</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Arduino+蓝牙初尝试</title>
     <url>/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/</url>
     <content><![CDATA[<p>  使用Arduino连接蓝牙，并使用手机收发数据</p>
@@ -38,25 +60,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Arduino读取MPU-9250数据</title>
-    <url>/Arduino/Arduino%E8%AF%BB%E5%8F%96MPU-9250%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<p>Arduino与MPU-9250通过IIC实现数据传输并尝试使用蓝牙传输数据</p>
+    <title>Next主题在首页显示图片</title>
+    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
 <span id="more"></span>
 
-<p>在淘宝商家找的成品并仿照设计了外围电路和PCB板子，师兄焊了三个板子，好在有一个能用（可以看出芯片真的非常小，确实不好焊）</p>
-<p><img src="1.jpg" alt="1" style="zoom: 10%;" /><img src="2.jpg" alt="2" style="zoom:10%;" /></p>
-<p>参照网上的这篇文章[(17条消息) <a href="https://blog.csdn.net/Gregory24/article/details/90454735">MPU9250+Arduino/读取传感器数据</a>，跑了他的代码，幸运的可以跑通。这个教程和另外一篇csdn上的文案一模一样，我都不知道谁抄谁的，难绷。</p>
-<img src="image-20230707112603099.png" alt="image-20230707112603099" style="zoom:50%;" />
+<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>接下来的工作是搞懂代码，修改输出的数据形式，并用蓝牙传输。</p>
+<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
+<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
+<img src="image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
+
+<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
+<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: :categories/:title/test.jpg</code>这样的写法并不有效。</p>
 ]]></content>
       <categories>
-        <category>Arduino</category>
+        <category>Hexo</category>
       </categories>
       <tags>
-        <tag>Arduino</tag>
-        <tag>蓝牙</tag>
-        <tag>IMU</tag>
+        <tag>hexo</tag>
+        <tag>图片显示</tag>
       </tags>
   </entry>
   <entry>
@@ -257,63 +281,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Next主题在首页显示图片</title>
-    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
-<span id="more"></span>
-
-<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
-<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
-<img src="image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
-
-<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
-<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: :categories/:title/test.jpg</code>这样的写法并不有效。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>图片显示</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo与typora图片显示问题</title>
-    <url>/Hexo/hexo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>可以说是困扰了将近两年的问题，终于被解决了！</p>
-<span id="more"></span>
-
-<p>在我昨天开始写重拾hexo这篇博客的时候，我提到了这个图片显示问题，主要原因是<strong>二者相对路径不统一</strong>。</p>
-<p>在旧hexo2上，大多博主采用下载插件方式解决问题，即hexo-asset-image的方式，但随着hexo的更新，hexo-asset-image已经失效，而且官方给出新的嵌入图片的方式。</p>
-<img src="image-20230630150252331.png" alt="image-20230630150252331" style="zoom: 67%;" />
-
-<p>经我几番查找，终于找到一个完美的解决方案<a href="https://zhuanlan.zhihu.com/p/265077468">hexo博客如何插入图片 - 知乎 (zhihu.com)</a></p>
-<p>首先，按照官方方式将post_asset_folder设置为true，这会使hexo创建新文章时同时在相同目录下创建同名文件夹。</p>
-<p>然后在typore的偏好设置中这样设置：</p>
-<img src="image-20230630150637228.png" alt="image-20230630150637228" style="zoom:67%;" />
-
-<p>这样，在插入图片时就会放入hexo生成的那个文件夹中了。</p>
-<p>最后，在typora-格式-图像-设置图片根目录为hexo生成的文件夹，就能保持hexo和typora二者相对路径保持一致了，完美！</p>
-<p>每个文件都要手动设置根目录是绝对不行的，在最后一步中，我们可以发现，设置完根目录后，只是在md文件的开头部分新增了typora-root-url: 根目录，因此，我们可以将其添加进模板中，即进入scaffolds文件夹，进入post.md，添加一行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typora-root-url: &#123;&#123; title &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>至此，算是彻底解决了这个长久以来的问题。</p>
-<hr>
-<p>发现了个小问题，在直接复制时，typora总会在路径保留一个“/”，不去掉的话，在hexo上无法预览，下面就是一个例子。</p>
-<img src="/usb-1688110147484.jpg" alt="usb" style="zoom:67%;" />]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>图片显示</tag>
-        <tag>typora</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>c++期末笔记</title>
     <url>/SJTU/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>程序设计思想与方法-期末复习</p>
@@ -371,6 +338,95 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo与typora图片显示问题</title>
+    <url>/Hexo/hexo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>可以说是困扰了将近两年的问题，终于被解决了！</p>
+<span id="more"></span>
+
+<p>在我昨天开始写重拾hexo这篇博客的时候，我提到了这个图片显示问题，主要原因是<strong>二者相对路径不统一</strong>。</p>
+<p>在旧hexo2上，大多博主采用下载插件方式解决问题，即hexo-asset-image的方式，但随着hexo的更新，hexo-asset-image已经失效，而且官方给出新的嵌入图片的方式。</p>
+<img src="image-20230630150252331.png" alt="image-20230630150252331" style="zoom: 67%;" />
+
+<p>经我几番查找，终于找到一个完美的解决方案<a href="https://zhuanlan.zhihu.com/p/265077468">hexo博客如何插入图片 - 知乎 (zhihu.com)</a></p>
+<p>首先，按照官方方式将post_asset_folder设置为true，这会使hexo创建新文章时同时在相同目录下创建同名文件夹。</p>
+<p>然后在typore的偏好设置中这样设置：</p>
+<img src="image-20230630150637228.png" alt="image-20230630150637228" style="zoom:67%;" />
+
+<p>这样，在插入图片时就会放入hexo生成的那个文件夹中了。</p>
+<p>最后，在typora-格式-图像-设置图片根目录为hexo生成的文件夹，就能保持hexo和typora二者相对路径保持一致了，完美！</p>
+<p>每个文件都要手动设置根目录是绝对不行的，在最后一步中，我们可以发现，设置完根目录后，只是在md文件的开头部分新增了typora-root-url: 根目录，因此，我们可以将其添加进模板中，即进入scaffolds文件夹，进入post.md，添加一行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typora-root-url: &#123;&#123; title &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，算是彻底解决了这个长久以来的问题。</p>
+<hr>
+<p>发现了个小问题，在直接复制时，typora总会在路径保留一个“/”，不去掉的话，在hexo上无法预览，下面就是一个例子。</p>
+<img src="/usb-1688110147484.jpg" alt="usb" style="zoom:67%;" />]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>图片显示</tag>
+        <tag>typora</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bat脚本使用小tips</title>
+    <url>/%E9%9A%8F%E7%AC%94/bat%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%B0%8Ftips/</url>
+    <content><![CDATA[<p> 使用bat脚本时的一些小tips</p>
+<span id="more"></span>
+
+<p>1.echo off的作用</p>
+<p>参考这个，讲的很详细<a href="https://blog.csdn.net/qq_39071599/article/details/111477894">bat文件的@echo off是什么作用？_</a></p>
+<p>简单来讲就是，echo是回显的作用，会显示这条命令后的内容，而echo off就是关闭回显，但是不包括这条命令，@echo off就是关闭回显且包括这条命令</p>
+<p>2.在bat里调用其它bat</p>
+<p>两种方式，一种是call，在本bat窗口调用，另一种是start，会另开一个窗口</p>
+<p>这里以一个情景为例，在Desktop文件夹里我创建了test.bat文件，想要调用Desktop\test文件夹下三个bat文件，分别为1.bat,2.bat,3.bat，三个文件内容相同均为：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>由于没有加入pause，脚本会在迅速执行后自动关闭窗口</p>
+<p>那么我在test.bat文件中写入</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>期望的效果是，分别调用三个窗口，执行后自动关闭窗口，但是实际的效果是留下了三个窗口，如图</p>
+<img src="image-20230803233034468.png" alt="image-20230803233034468" style="zoom: 67%;" />
+
+<p>要想自动关闭这个窗口，在三个文件结尾加入exit即可。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，如果是一直执行的脚本，不能exit，但我们又不想手动去最小化每个窗口，那么，只要在test.bat的start后加入参数”/min”即可</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> /min <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>这样就会在启动新窗口时自动最小化了。其它可用的参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“title” 指定在“命令提示符”窗口标题栏中显示的标题。</span><br><span class="line">/dpatch 指定启动目录。</span><br><span class="line">/i 将 Cmd.exe 启动环境传送到新的“命令提示符”窗口。</span><br><span class="line">/min 启动新的最小化窗口。</span><br><span class="line">/max 启动新的最大化窗口。</span><br><span class="line">/separate 在单独的内存空间启动 16 位程序。</span><br><span class="line">/shared 在共享的内存空间启动 16 位程序。</span><br><span class="line">/low 以空闲优先级启动应用程序。</span><br><span class="line">/normal 以一般优先级启动应用程序。</span><br><span class="line">/high 以高优先级启动应用程序。</span><br><span class="line">/realtime 以实时优先级启动应用程序。</span><br><span class="line">/abovenormal 以超出常规优先级的方式启动应用程序。</span><br><span class="line">/belownormal 以低出常规优先级的方式启动应用程序。</span><br><span class="line">/wait 启动应用程序，并等待其结束。</span><br><span class="line">/b 启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用 CTRL+C，否则将忽略 CTRL+C 操作。使用 CTRL+BREAK 中断应用程序。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>bat</tag>
+        <tag>脚本</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>realmeGTNeoRoot体验</title>
+    <url>/%E6%89%8B%E6%9C%BA/realmeGTNeoRoot%E4%BD%93%E9%AA%8C/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p><a href="https://blog.csdn.net/qq2268338150/article/details/122427703?spm=1001.2014.3001.5501">Realme GT Neo ROOT 解锁BL教程_真我gtneo怎么root_Lash_circle的博客-CSDN博客</a></p>
+<p><img src="/%E6%89%8B%E6%9C%BA/realmeGTNeoRoot%E4%BD%93%E9%AA%8C/image-20230805215410062.png" alt="image-20230805215410062"></p>
+<p><a href="http://wanji.jamcz.com/">玩机资源合集 (jamcz.com)</a></p>
+]]></content>
+      <categories>
+        <category>手机</category>
+      </categories>
+      <tags>
+        <tag>realme</tag>
+        <tag>root</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于Arduino的智能物流小车</title>
     <url>/SJTU/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E7%89%A9%E6%B5%81%E5%B0%8F%E8%BD%A6/</url>
     <content><![CDATA[<p><em>工程实践项目：基于Arduino板的智能物流小车</em></p>
@@ -392,6 +448,185 @@
       <tags>
         <tag>Arduino</tag>
         <tag>物流小车</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>夏日口袋赛博圣地巡礼</title>
+    <url>/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/</url>
+    <content><![CDATA[<p> 这两天推夏日口袋，B站就给我推送圣地巡礼，让我好是羡慕。但是咱又去不了，突发奇想，几年前我记得是在哪个软件上看到有街景地图的，于是就想能不能来一场赛博圣地巡礼。</p>
+<span id="more"></span>
+
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>先是试了试缺德地图，结果并不能看到国外的街景，甚至国外的地图基本都看不到，只有一片片的白。</p>
+<img src="image-20230815210822318.png" alt="image-20230815210822318" style="zoom:50%;" />
+
+<p>接着就想到了谷歌地图，毕竟这方面谷歌还是很厉害的。谷歌的谷歌地球简直完美契合了我的要求，可以查看全球街景，只要有个谷歌账号就能使用。</p>
+<p>鸟白岛在现实中并不是一个岛屿，而是在直岛、男木岛和女木岛三个岛屿取景的，三个岛位置临近，在日本四国的北部的香泉县，其中直岛最大，男木岛最小。</p>
+<img src="image-20230815211851985.png" alt="image-20230815211851985" style="zoom: 50%;" />
+
+<p>找到地方后，接下来正式开始赛博——圣地巡礼！</p>
+<p>感谢以下视频和帖子，帮了我不少忙</p>
+<ul>
+<li><p><a href="https://www.bilibili.com/video/BV1Sk4y177SE/?spm_id_from=333.788&vd_source=f6fe5f5f48937a5b52419e6dcaf2f1d9">唯有那份炫目，未曾忘却bilibili</a></p>
+</li>
+<li><p><a href="https://www.bilibili.com/read/cv3253293/">从零开始的鸟白岛巡礼指南 - 哔哩哔哩 (bilibili.com)</a></p>
+</li>
+<li><p><a href="https://tieba.baidu.com/p/5914561222">【图片】summer pockets圣地巡礼攻略（持续更新）【galgame吧】_百度贴吧 (baidu.com)</a></p>
+</li>
+<li><p><a href="https://tieba.baidu.com/p/7512486383">【图片】鸟白岛圣地巡礼8月6日～8月15日【key吧】_百度贴吧 (baidu.com)</a></p>
+</li>
+</ul>
+<p>感谢这位日本网友的谷歌地图标记，帮大忙了</p>
+<p><a href="https://www.google.com/maps/d/viewer?mid=1HwI6d1p8N7RNKB4dG0_edBzaJmthMgRs&amp;hl=ja&amp;ll=34.460939999999994,133.99790259999997&amp;z=13">https://www.google.com/maps/d/viewer?mid=1HwI6d1p8N7RNKB4dG0_edBzaJmthMgRs&amp;hl=ja&amp;ll=34.460939999999994%2C133.99790259999997&amp;z=13</a> </p>
+<p>这是总结的三个岛的取景，不过可能有遗漏</p>
+<table>
+<thead>
+<tr>
+<th align="center">直岛</th>
+<th align="center">游戏</th>
+<th>现实</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">加藤家</td>
+<td>石井商店本家</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">食堂</td>
+<td>石井商店</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">加藤家附近街景</td>
+<td>石井商店稍往东</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">白羽钓鱼处（游戏中小岛外部）</td>
+<td>岛东部</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">沙滩浴场</td>
+<td>岛南部</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">蓄水池</td>
+<td>岛中部</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">鸣濑神社</td>
+<td>无街景</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">鸟白岛港口</td>
+<td>Marine station “Naoshima”</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">粗点心屋</td>
+<td>港口附近</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">海之家</td>
+<td>Tsutsuji-so</td>
+</tr>
+<tr>
+<td align="center"><strong>男木岛</strong></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">初见苍的小路</td>
+<td>岛中西部</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">鸟白岛全景</td>
+<td>无街景</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">村公所</td>
+<td>渔协</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">游泳池</td>
+<td>高松市立男木中学校旁</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">遇见鸥的海岸</td>
+<td>男木渔港旁的海岸</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">白羽提鞋视角</td>
+<td>渔协旁，无街景</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">紬的灯塔</td>
+<td>岛北部</td>
+</tr>
+<tr>
+<td align="center"><strong>女木岛</strong></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">鸥的洞穴</td>
+<td>岛中部</td>
+</tr>
+</tbody></table>
+<h3 id="正片开始"><a href="#正片开始" class="headerlink" title="正片开始"></a><strong>正片开始</strong></h3><p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164950.jpg" alt="IMG_20230819_164950"></p>
+<p>加藤家，现实中加藤家和食堂都在石井商店</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164905.jpg" alt="IMG_20230819_164905"></p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164840.jpg" alt="IMG_20230819_164840"></p>
+<p>两条街道</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164509.jpg" alt="IMG_20230819_164509"></p>
+<p>白羽钓鱼处</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164206.jpg" alt="IMG_20230819_164206"></p>
+<p>沙滩浴场，可以看到那一排突出的石砖，可惜谷歌地图街景没有游戏中的视角</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164441.jpg" alt="IMG_20230819_164441"></p>
+<p>蓄水池</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_165056.jpg" alt="IMG_20230819_165056"></p>
+<p>鸟白岛港口，也没有比较好的视角</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_165023.jpg" alt="IMG_20230819_165023"></p>
+<p>粗点心屋</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_165116.jpg" alt="IMG_20230819_165116"></p>
+<p>海之家，静久的鸟居也在海之家附近</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164754.jpg" alt="IMG_20230819_164754"></p>
+<p>遇见苍的小路，拍摄的时候路两旁的草不是那么旺盛呢</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164653.jpg" alt="IMG_20230819_164653"></p>
+<p>鸟白岛役场（村公所），可惜没有正面的角度</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_165133.jpg" alt="IMG_20230819_165133"></p>
+<p>游泳池，并没有里面的视角，不过看别的帖子里还原度很高</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164818.jpg" alt="IMG_20230819_164818"></p>
+<p>遇见鸥的海岸</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164342.jpg" alt="IMG_20230819_164342"><br><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_165310.jpg" alt="IMG_20230819_165310"></p>
+<p>紬的灯塔</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_163935.jpg" alt="IMG_20230819_163935"><br><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/IMG_20230819_164124.jpg" alt="IMG_20230819_164124"></p>
+<p>鸥的洞穴</p>
+<p>最后附上紬灯塔的全景和一张港口船上的照片：</p>
+<p><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/%E7%81%AF%E5%A1%943.png" alt="灯塔3"><br><img src="/%E6%9D%82%E8%B0%88/%E5%A4%8F%E6%97%A5%E5%8F%A3%E8%A2%8B%E8%B5%9B%E5%8D%9A%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/%E8%88%B9%E4%B8%8A.png" alt="船上"></p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a><strong>写在最后</strong></h3><p>在夏天推夏日口袋，别有一番韵味。游戏本身的剧情就有不少让我感受颇深的地方，与现实的交错（圣地巡礼）更是给了我不少惊喜。我也是在看了圣地巡礼的视频后突发奇想才做了这么一个赛博圣地巡礼，简单搜了一下还没发现有别人做过，也算一次不错的体验了。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>galgame</tag>
+        <tag>夏日口袋</tag>
+        <tag>summerpockets</tag>
       </tags>
   </entry>
   <entry>
@@ -605,6 +840,46 @@
       </categories>
       <tags>
         <tag>心理健康</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小米使用体验（长期更新）</title>
+    <url>/%E6%9D%82%E8%B0%88/%E5%B0%8F%E7%B1%B3%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%EF%BC%88%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <content><![CDATA[<p> 记录一下小米产品的使用体验，随缘更新。</p>
+<span id="more"></span>
+
+<h3 id="2023-8-1"><a href="#2023-8-1" class="headerlink" title="2023.8.1"></a>2023.8.1</h3><p>想了一下，手上目前两台米家设备，又打算买一个小米手环，这样一来小米的设备多了，看来必须记录一下使用体验了。</p>
+<p>上手红米note12Turbo已经两个星期多了，当初讲了一些刚上手的体验，今天讲讲其它的。</p>
+<p>手机整体使用还是很不错的，这块处理器各项性能都很优秀。续航也可以，早上充满电，中度使用可以到下午7点还剩20的电，轻度使用一整天应该没问题。也放一个平板的跑分对比，平板处理器是8+。</p>
+<img src="2.jpg" alt="2" style="zoom:50%;" />
+
+<img src="3.jpg" alt="3" style="zoom:50%;" />
+
+<p>网易云音乐在锁屏时会专门有一个播放界面，背景是歌曲的封面之类，然后会有歌词，下面会有一个滑动解锁，但是，前两天不知什么原因，这个滑动解锁一直失效，只能从下边缘上划解锁。不过这个bug这两天又消失了，真不知道是MIUI还是网易云的锅。</p>
+<img src="1.jpg" alt="1" style="zoom:33%;" />
+
+<p>其它的bug暂时没有遇到，只是小米传送门的支持范围还是不够，比如edge浏览器还有一些其它场景用不了。</p>
+<p>接下来重点讲一下小米的设备互联，也就是小米妙享。小米妙享是只支持自家电脑的，但是民间自有大佬在。当初刚到手平板的时候浅尝试了一下，没有成功，前几天又试了一次，很顺利也很成功。</p>
+<p>主要参考这个<a href="https://www.bilibili.com/video/BV1iP411y7ob/">全网最简单！小米妙享安装方法_哔哩哔哩_bilibili</a>和<a href="https://www.coolapk.com/feed/42297337?shareKey=N2I4ZTc0YTk3YzA4NjRhZmU3NDU~&shareUid=23139762&shareFrom=com.coolapk.market_13.3">PC小米妙享安装+解锁流转补丁 来自 ChsBuffer - 酷安 (coolapk.com)</a>所以说玩机这块还得看酷安。</p>
+<img src="image-20230801105320045.png" alt="image-20230801105320045" style="zoom:50%;" />
+
+<p>各项功能基本正常，手机能传文件和屏幕投屏，在电脑连接了手机热点后，延迟和流畅度表现都很优秀，不足之处是画面清晰度不够，不过考虑到电脑和手机的分辨率和像素密度，倒也可以理解。</p>
+<p>连接平板功能更多，可以作为镜像和扩展屏，也可以键鼠共享。其中最有用的要数屏幕扩展了，也就是把平板作为副屏来使用 ，经过测试，刷新率会被限制在60hz，帧率在144hz，还行吧。键鼠共享体验还算合格，即使我笔记本用的是无线键鼠，这样共享过去几乎还是感受不到延迟，缺点是鼠标有点飘，部分原因是分辨率问题。</p>
+<img src="image-20230801105620460.png" alt="image-20230801105620460" style="zoom:50%;" />
+
+<p>其它功能音乐流转、应用接力都可以使用。</p>
+<p>接下来讲讲目前还存在的问题，</p>
+<p>1.首先是一键热点不能正常使用，也就是点了一键热点并不会一键帮你连接，还需要你手动到wifi界面去连接，不过这个我更倾向于是网卡的问题，这b联发科7921问题太多了，天热掉网卡、wifi有时候连不上，以后换个网卡再试试吧。</p>
+<p>2.音乐流转手机不能流转到平板上，这个好像是说手机不支持接力，但是手机和平板的音乐都可以流转到电脑上，唯独手机和平板之间不能互相流转，很怪。</p>
+<p>3.手机和平板与电脑流转时必须先连接设备且开热点给电脑，即使是处于同一网络。这个也很怪，手机和平版的互联就很方便，基本只要开启了WiFi就行，而电脑即使处于同一wifi下也不行，只能靠热点。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>小米</tag>
+        <tag>红米</tag>
+        <tag>MIUI</tag>
       </tags>
   </entry>
   <entry>
@@ -837,6 +1112,97 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/uncategorized/%E6%B8%85%E6%BA%90/</url>
+    <content><![CDATA[<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
+<p><a href="https://item.szlcsc.com/24852.html">MPU-6050_（TDK InvenSense(应美盛)）MPU-6050中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/100740936">Arduino开发板使用MPU6050加速度计和陀螺仪的方法 - 知乎 (zhihu.com)</a></p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
+<p><a href="https://item.szlcsc.com/202245.html">BMI055_（Bosch(博世)）BMI055中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<h4 id="usb接口"><a href="#usb接口" class="headerlink" title="usb接口"></a>usb接口</h4><p><a href="https://zhuanlan.zhihu.com/p/447595295">秒懂所有USB接口类型，USB接口大全；Type-A、Type-B、Type-C、miniUSB、microUSB区分 - 知乎 (zhihu.com)</a></p>
+<h5 id="命名问题"><a href="#命名问题" class="headerlink" title="命名问题"></a>命名问题</h5><p><img src="/uncategorized/%E6%B8%85%E6%BA%90/usb.jpg" alt="usb"></p>
+<h5 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h5><p>标准USB接口：Type A，Type B支持USB1.0-3.2</p>
+<p>mini：mini A，mini B，仅支持到USB2.0</p>
+<p>Micro：Micro A，Micro B，支持到USB3.0</p>
+<p>Type C：从USB2.0-4.0</p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628141549844.png" alt="image-20230628141549844"></p>
+<h4 id="关于OTG"><a href="#关于OTG" class="headerlink" title="关于OTG"></a>关于OTG</h4><p><a href="https://zhuanlan.zhihu.com/p/454364494">手机OTG连接什么意思？都能实现哪些功能 - 知乎 (zhihu.com)</a></p>
+<p>OTG（On The Go，没有主机时的，端对端的数据传输，如相机直接与打印机连接而打印照片）功能是目前大多数智能手机的一个设计，具备这个功能的手机可通过使用OTG转接头或转接线连接其它设备。</p>
+<p>a:例如U盘，手机支持OTG、或者使用OTG转接头，然后就可以在手机上直接读取U盘文件。</p>
+<p>b:比较常见的支持USB的设备均可通过OTG方式进行连接，常见的比如键盘、手 机、游戏操作手柄等等。（手机键盘，鼠标等就是通过OTG方式连接）</p>
+<p>c:当外出在外，有些小设备（手环、智能手表、MP3等）没有电时，可以通过使用支持反向充电的专用OTG线连接手机进行充电。</p>
+<h4 id="什么是雷电4"><a href="#什么是雷电4" class="headerlink" title="什么是雷电4"></a>什么是雷电4</h4><p><a href="https://zhuanlan.zhihu.com/p/449978612">到底什么是雷电接口，这个接口有什么用？ - 知乎 (zhihu.com)</a></p>
+<p>雷电和HDMI、DP一样，都是一种传输协议，英文名为Thunderbolt。</p>
+<p>目前雷电3/4的接口形状和Type C口的形状相同。</p>
+<p>特别注意：不是所有的TypeC接口都是雷电接口，TypeC只是接口的规格和形态，而雷电是一种标准，两者没有必然关联，只不过现阶段雷电口是以C口的形式出现，并不意味着你电脑上有TypeC接口他就是雷电接口，主要标志物是看旁边有没有闪电标志。</p>
+<p>关于雷电接口的主要优势可以用两个词来形容：”<strong>全兼容</strong>“ “<strong>高带宽</strong>“。</p>
+<p>雷电3与雷电4的扩展坞都需要供电才能使用。</p>
+<p>雷电3雷电4，最高能够扩展出USB 3.2 Gen2（即USB3.1）接口 ，都还不支持USB3.2，可以扩展出DP1.4，HDMI2.1，PD供电，音频口，内存口，网线口，vga口接口等。</p>
+<h4 id="屏幕刷新率与传输带宽要求"><a href="#屏幕刷新率与传输带宽要求" class="headerlink" title="屏幕刷新率与传输带宽要求"></a>屏幕刷新率与传输带宽要求</h4><p><a href="https://zhuanlan.zhihu.com/p/638519560#">视频分辨率、刷新率和传输带宽之间的联系，你了解吗？ - 知乎 (zhihu.com)</a></p>
+<p>以4k 60hz为例：</p>
+<p>带宽要求：3840*2160(分辨率) *3(三个子像素) *8bit(位深，256) *60fps=11.12Gbps</p>
+<h4 id="Arduino-Uno"><a href="#Arduino-Uno" class="headerlink" title="Arduino Uno"></a>Arduino Uno</h4><p><a href="https://zhuanlan.zhihu.com/p/404917210">认识Arduino UNO - 知乎 (zhihu.com)</a></p>
+<h4 id="IIC-I2C通信协议"><a href="#IIC-I2C通信协议" class="headerlink" title="IIC/I2C通信协议"></a>IIC/I2C通信协议</h4><p><a href="https://zhuanlan.zhihu.com/p/503219395">IIC通信协议，搞懂这篇就够了 - 知乎 (zhihu.com)</a></p>
+<p>I2C(<strong>IIC</strong>)属于两线式串行总线，由飞利浦公司开发用于微控制器(MCU)和外围设备(从设备)进行通信的一种总线，属于<strong>一主多从(一个主设备(Master)，多个从设备(Slave))的总线结构</strong>，<strong>总线上的每个设备都有一个特定的设备地址，以区分同一I2C总线上的其他设备</strong>。</p>
+<h3 id="2023-6-29"><a href="#2023-6-29" class="headerlink" title="2023.6.29"></a>2023.6.29</h3><h4 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h4><p>使用原本的大传感器时有一个输出是欧拉角，网上查了查，看的云里雾里的。</p>
+<p><a href="https://www.zhihu.com/question/47736315">如何通俗地解释欧拉角？之后为何要引入四元数？ - 知乎 (zhihu.com)</a></p>
+<h4 id="立创EDA"><a href="#立创EDA" class="headerlink" title="立创EDA"></a>立创EDA</h4><p><a href="https://zhuanlan.zhihu.com/p/76736613">200 一步步开始学习制作PCB&amp;PCBA–绘制原理图 - 知乎 (zhihu.com)</a></p>
+<h4 id="九轴"><a href="#九轴" class="headerlink" title="九轴"></a>九轴</h4><p><a href="https://item.szlcsc.com/72567.html">MPU-9250_（TDK InvenSense(应美盛)）MPU-9250中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<p>ICM-20948</p>
+<p>三轴磁传感器</p>
+<p>QMC5883</p>
+<p><a href="https://item.szlcsc.com/391847.html">MMC5603NJ_（MEMSIC(美新)）MMC5603NJ中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
+<h3 id="2023-7-03"><a href="#2023-7-03" class="headerlink" title="2023.7.03"></a>2023.7.03</h3><p>今天画PCB板</p>
+<p>先放成果</p>
+<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230703145943612.png" alt="image-20230703145943612"></p>
+<p>几个注意事项：</p>
+<p>1.电源线要粗一点，这里用的是20mil，90°圆弧</p>
+<p>2.过不去的地方使用过孔。</p>
+<p>3.其余线用45°线条。</p>
+<h3 id="2023-07-10"><a href="#2023-07-10" class="headerlink" title="2023.07.10"></a>2023.07.10</h3><p>使用蓝牙将IMU数据传输到树莓派</p>
+<p>寻找贴片蓝牙模块ESP32-PICO-D4</p>
+<h3 id="2023-7-11"><a href="#2023-7-11" class="headerlink" title="2023.7.11"></a>2023.7.11</h3><p>找到新蓝牙模块<strong>WH-BLE103a</strong></p>
+<p>设计二合一（atmega328+蓝牙）PCB电路板和三合一（atmega328+蓝牙+IMU）PCB电路板</p>
+<img src="image-20230711175318786.png" alt="三合一" style="zoom:50%;" />
+
+<img src="image-20230711175333683.png" alt="二合一" style="zoom:50%;" />
+
+<h3 id="2023-07-18"><a href="#2023-07-18" class="headerlink" title="2023.07.18"></a>2023.07.18</h3><p>这么多天一直在调试这个蓝牙模块WH-BLE103a，手机和windows都能连接的上，就是树莓派死活连接不了，受不了了。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>线代编程作业</title>
+    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<p>SJTU线性代数编程作业</p>
+<span id="more"></span>
+
+<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
+<p>(1)计算23阶行列式D</p>
+<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
+<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
+<p>(二)行列式D(矩阵A)的产生:</p>
+<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
+<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
+<p>项依次排在行列式的各行上.</p>
+<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
+<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
+<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
+<p>文件为源文件与输出文件.</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SJTU</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>线代</tag>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>红米Note12Turbo上手体验与真我GTNeo对比</title>
     <url>/%E6%9D%82%E8%B0%88/%E7%BA%A2%E7%B1%B3Note12Turbo%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C%E4%B8%8E%E7%9C%9F%E6%88%91GTNeo%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<p>这两天入手了红米Note12Turbo，在更换手机和使用过程中有不少感触，拿出来讲一讲。</p>
@@ -884,38 +1250,6 @@
       <tags>
         <tag>手机</tag>
         <tag>手机系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线代编程作业</title>
-    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<p>SJTU线性代数编程作业</p>
-<span id="more"></span>
-
-<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
-<p>(1)计算23阶行列式D</p>
-<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
-<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
-<p>(二)行列式D(矩阵A)的产生:</p>
-<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
-<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
-<p>项依次排在行列式的各行上.</p>
-<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
-<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
-<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
-<p>文件为源文件与输出文件.</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SJTU</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>线代</tag>
-        <tag>matlab</tag>
       </tags>
   </entry>
   <entry>
@@ -1046,144 +1380,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>博客搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小米使用体验（长期更新）</title>
-    <url>/%E6%9D%82%E8%B0%88/%E5%B0%8F%E7%B1%B3%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%EF%BC%88%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
-    <content><![CDATA[<p> 记录一下小米产品的使用体验，随缘更新。</p>
-<span id="more"></span>
-
-<h3 id="2023-8-1"><a href="#2023-8-1" class="headerlink" title="2023.8.1"></a>2023.8.1</h3><p>想了一下，手上目前两台米家设备，又打算买一个小米手环，这样一来小米的设备多了，看来必须记录一下使用体验了。</p>
-<p>上手红米note12Turbo已经两个星期多了，当初讲了一些刚上手的体验，今天讲讲其它的。</p>
-<p>手机整体使用还是很不错的，这块处理器各项性能都很优秀。续航也可以，早上充满电，中度使用可以到下午7点还剩20的电，轻度使用一整天应该没问题。也放一个平板的跑分对比，平板处理器是8+。</p>
-<img src="2.jpg" alt="2" style="zoom:50%;" />
-
-<img src="3.jpg" alt="3" style="zoom:50%;" />
-
-<p>网易云音乐在锁屏时会专门有一个播放界面，背景是歌曲的封面之类，然后会有歌词，下面会有一个滑动解锁，但是，前两天不知什么原因，这个滑动解锁一直失效，只能从下边缘上划解锁。不过这个bug这两天又消失了，真不知道是MIUI还是网易云的锅。</p>
-<img src="1.jpg" alt="1" style="zoom:33%;" />
-
-<p>其它的bug暂时没有遇到，只是小米传送门的支持范围还是不够，比如edge浏览器还有一些其它场景用不了。</p>
-<p>接下来重点讲一下小米的设备互联，也就是小米妙享。小米妙享是只支持自家电脑的，但是民间自有大佬在。当初刚到手平板的时候浅尝试了一下，没有成功，前几天又试了一次，很顺利也很成功。</p>
-<p>主要参考这个<a href="https://www.bilibili.com/video/BV1iP411y7ob/">全网最简单！小米妙享安装方法_哔哩哔哩_bilibili</a>和<a href="https://www.coolapk.com/feed/42297337?shareKey=N2I4ZTc0YTk3YzA4NjRhZmU3NDU~&shareUid=23139762&shareFrom=com.coolapk.market_13.3">PC小米妙享安装+解锁流转补丁 来自 ChsBuffer - 酷安 (coolapk.com)</a>所以说玩机这块还得看酷安。</p>
-<img src="image-20230801105320045.png" alt="image-20230801105320045" style="zoom:50%;" />
-
-<p>各项功能基本正常，手机能传文件和屏幕投屏，在电脑连接了手机热点后，延迟和流畅度表现都很优秀，不足之处是画面清晰度不够，不过考虑到电脑和手机的分辨率和像素密度，倒也可以理解。</p>
-<p>连接平板功能更多，可以作为镜像和扩展屏，也可以键鼠共享。其中最有用的要数屏幕扩展了，也就是把平板作为副屏来使用 ，经过测试，刷新率会被限制在60hz，帧率在144hz，还行吧。键鼠共享体验还算合格，即使我笔记本用的是无线键鼠，这样共享过去几乎还是感受不到延迟，缺点是鼠标有点飘，部分原因是分辨率问题。</p>
-<img src="image-20230801105620460.png" alt="image-20230801105620460" style="zoom:50%;" />
-
-<p>其它功能音乐流转、应用接力都可以使用。</p>
-<p>接下来讲讲目前还存在的问题，</p>
-<p>1.首先是一键热点不能正常使用，也就是点了一键热点并不会一键帮你连接，还需要你手动到wifi界面去连接，不过这个我更倾向于是网卡的问题，这b联发科7921问题太多了，天热掉网卡、wifi有时候连不上，以后换个网卡再试试吧。</p>
-<p>2.音乐流转手机不能流转到平板上，这个好像是说手机不支持接力，但是手机和平板的音乐都可以流转到电脑上，唯独手机和平板之间不能互相流转，很怪。</p>
-<p>3.手机和平板与电脑流转时必须先连接设备且开热点给电脑，即使是处于同一网络。这个也很怪，手机和平版的互联就很方便，基本只要开启了WiFi就行，而电脑即使处于同一wifi下也不行，只能靠热点。</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>小米</tag>
-        <tag>红米</tag>
-        <tag>MIUI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/uncategorized/%E6%B8%85%E6%BA%90/</url>
-    <content><![CDATA[<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
-<p><a href="https://item.szlcsc.com/24852.html">MPU-6050_（TDK InvenSense(应美盛)）MPU-6050中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/100740936">Arduino开发板使用MPU6050加速度计和陀螺仪的方法 - 知乎 (zhihu.com)</a></p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
-<p><a href="https://item.szlcsc.com/202245.html">BMI055_（Bosch(博世)）BMI055中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
-<h4 id="usb接口"><a href="#usb接口" class="headerlink" title="usb接口"></a>usb接口</h4><p><a href="https://zhuanlan.zhihu.com/p/447595295">秒懂所有USB接口类型，USB接口大全；Type-A、Type-B、Type-C、miniUSB、microUSB区分 - 知乎 (zhihu.com)</a></p>
-<h5 id="命名问题"><a href="#命名问题" class="headerlink" title="命名问题"></a>命名问题</h5><p><img src="/uncategorized/%E6%B8%85%E6%BA%90/usb.jpg" alt="usb"></p>
-<h5 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h5><p>标准USB接口：Type A，Type B支持USB1.0-3.2</p>
-<p>mini：mini A，mini B，仅支持到USB2.0</p>
-<p>Micro：Micro A，Micro B，支持到USB3.0</p>
-<p>Type C：从USB2.0-4.0</p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628141549844.png" alt="image-20230628141549844"></p>
-<h4 id="关于OTG"><a href="#关于OTG" class="headerlink" title="关于OTG"></a>关于OTG</h4><p><a href="https://zhuanlan.zhihu.com/p/454364494">手机OTG连接什么意思？都能实现哪些功能 - 知乎 (zhihu.com)</a></p>
-<p>OTG（On The Go，没有主机时的，端对端的数据传输，如相机直接与打印机连接而打印照片）功能是目前大多数智能手机的一个设计，具备这个功能的手机可通过使用OTG转接头或转接线连接其它设备。</p>
-<p>a:例如U盘，手机支持OTG、或者使用OTG转接头，然后就可以在手机上直接读取U盘文件。</p>
-<p>b:比较常见的支持USB的设备均可通过OTG方式进行连接，常见的比如键盘、手 机、游戏操作手柄等等。（手机键盘，鼠标等就是通过OTG方式连接）</p>
-<p>c:当外出在外，有些小设备（手环、智能手表、MP3等）没有电时，可以通过使用支持反向充电的专用OTG线连接手机进行充电。</p>
-<h4 id="什么是雷电4"><a href="#什么是雷电4" class="headerlink" title="什么是雷电4"></a>什么是雷电4</h4><p><a href="https://zhuanlan.zhihu.com/p/449978612">到底什么是雷电接口，这个接口有什么用？ - 知乎 (zhihu.com)</a></p>
-<p>雷电和HDMI、DP一样，都是一种传输协议，英文名为Thunderbolt。</p>
-<p>目前雷电3/4的接口形状和Type C口的形状相同。</p>
-<p>特别注意：不是所有的TypeC接口都是雷电接口，TypeC只是接口的规格和形态，而雷电是一种标准，两者没有必然关联，只不过现阶段雷电口是以C口的形式出现，并不意味着你电脑上有TypeC接口他就是雷电接口，主要标志物是看旁边有没有闪电标志。</p>
-<p>关于雷电接口的主要优势可以用两个词来形容：”<strong>全兼容</strong>“ “<strong>高带宽</strong>“。</p>
-<p>雷电3与雷电4的扩展坞都需要供电才能使用。</p>
-<p>雷电3雷电4，最高能够扩展出USB 3.2 Gen2（即USB3.1）接口 ，都还不支持USB3.2，可以扩展出DP1.4，HDMI2.1，PD供电，音频口，内存口，网线口，vga口接口等。</p>
-<h4 id="屏幕刷新率与传输带宽要求"><a href="#屏幕刷新率与传输带宽要求" class="headerlink" title="屏幕刷新率与传输带宽要求"></a>屏幕刷新率与传输带宽要求</h4><p><a href="https://zhuanlan.zhihu.com/p/638519560#">视频分辨率、刷新率和传输带宽之间的联系，你了解吗？ - 知乎 (zhihu.com)</a></p>
-<p>以4k 60hz为例：</p>
-<p>带宽要求：3840*2160(分辨率) *3(三个子像素) *8bit(位深，256) *60fps=11.12Gbps</p>
-<h4 id="Arduino-Uno"><a href="#Arduino-Uno" class="headerlink" title="Arduino Uno"></a>Arduino Uno</h4><p><a href="https://zhuanlan.zhihu.com/p/404917210">认识Arduino UNO - 知乎 (zhihu.com)</a></p>
-<h4 id="IIC-I2C通信协议"><a href="#IIC-I2C通信协议" class="headerlink" title="IIC/I2C通信协议"></a>IIC/I2C通信协议</h4><p><a href="https://zhuanlan.zhihu.com/p/503219395">IIC通信协议，搞懂这篇就够了 - 知乎 (zhihu.com)</a></p>
-<p>I2C(<strong>IIC</strong>)属于两线式串行总线，由飞利浦公司开发用于微控制器(MCU)和外围设备(从设备)进行通信的一种总线，属于<strong>一主多从(一个主设备(Master)，多个从设备(Slave))的总线结构</strong>，<strong>总线上的每个设备都有一个特定的设备地址，以区分同一I2C总线上的其他设备</strong>。</p>
-<h3 id="2023-6-29"><a href="#2023-6-29" class="headerlink" title="2023.6.29"></a>2023.6.29</h3><h4 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h4><p>使用原本的大传感器时有一个输出是欧拉角，网上查了查，看的云里雾里的。</p>
-<p><a href="https://www.zhihu.com/question/47736315">如何通俗地解释欧拉角？之后为何要引入四元数？ - 知乎 (zhihu.com)</a></p>
-<h4 id="立创EDA"><a href="#立创EDA" class="headerlink" title="立创EDA"></a>立创EDA</h4><p><a href="https://zhuanlan.zhihu.com/p/76736613">200 一步步开始学习制作PCB&amp;PCBA–绘制原理图 - 知乎 (zhihu.com)</a></p>
-<h4 id="九轴"><a href="#九轴" class="headerlink" title="九轴"></a>九轴</h4><p><a href="https://item.szlcsc.com/72567.html">MPU-9250_（TDK InvenSense(应美盛)）MPU-9250中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
-<p>ICM-20948</p>
-<p>三轴磁传感器</p>
-<p>QMC5883</p>
-<p><a href="https://item.szlcsc.com/391847.html">MMC5603NJ_（MEMSIC(美新)）MMC5603NJ中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
-<h3 id="2023-7-03"><a href="#2023-7-03" class="headerlink" title="2023.7.03"></a>2023.7.03</h3><p>今天画PCB板</p>
-<p>先放成果</p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230703145943612.png" alt="image-20230703145943612"></p>
-<p>几个注意事项：</p>
-<p>1.电源线要粗一点，这里用的是20mil，90°圆弧</p>
-<p>2.过不去的地方使用过孔。</p>
-<p>3.其余线用45°线条。</p>
-<h3 id="2023-07-10"><a href="#2023-07-10" class="headerlink" title="2023.07.10"></a>2023.07.10</h3><p>使用蓝牙将IMU数据传输到树莓派</p>
-<p>寻找贴片蓝牙模块ESP32-PICO-D4</p>
-<h3 id="2023-7-11"><a href="#2023-7-11" class="headerlink" title="2023.7.11"></a>2023.7.11</h3><p>找到新蓝牙模块<strong>WH-BLE103a</strong></p>
-<p>设计二合一（atmega328+蓝牙）PCB电路板和三合一（atmega328+蓝牙+IMU）PCB电路板</p>
-<img src="image-20230711175318786.png" alt="三合一" style="zoom:50%;" />
-
-<img src="image-20230711175333683.png" alt="二合一" style="zoom:50%;" />
-
-<h3 id="2023-07-18"><a href="#2023-07-18" class="headerlink" title="2023.07.18"></a>2023.07.18</h3><p>这么多天一直在调试这个蓝牙模块WH-BLE103a，手机和windows都能连接的上，就是树莓派死活连接不了，受不了了。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>bat脚本使用小tips</title>
-    <url>/%E9%9A%8F%E7%AC%94/bat%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%B0%8Ftips/</url>
-    <content><![CDATA[<p> 使用bat脚本时的一些小tips</p>
-<span id="more"></span>
-
-<p>1.echo off的作用</p>
-<p>参考这个，讲的很详细<a href="https://blog.csdn.net/qq_39071599/article/details/111477894">bat文件的@echo off是什么作用？_</a></p>
-<p>简单来讲就是，echo是回显的作用，会显示这条命令后的内容，而echo off就是关闭回显，但是不包括这条命令，@echo off就是关闭回显且包括这条命令</p>
-<p>2.在bat里调用其它bat</p>
-<p>两种方式，一种是call，在本bat窗口调用，另一种是start，会另开一个窗口</p>
-<p>这里以一个情景为例，在Desktop文件夹里我创建了test.bat文件，想要调用Desktop\test文件夹下三个bat文件，分别为1.bat,2.bat,3.bat，三个文件内容相同均为：</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>由于没有加入pause，脚本会在迅速执行后自动关闭窗口</p>
-<p>那么我在test.bat文件中写入</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
-
-<p>期望的效果是，分别调用三个窗口，执行后自动关闭窗口，但是实际的效果是留下了三个窗口，如图</p>
-<img src="image-20230803233034468.png" alt="image-20230803233034468" style="zoom: 67%;" />
-
-<p>要想自动关闭这个窗口，在三个文件结尾加入exit即可。</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-
-<p>另外，如果是一直执行的脚本，不能exit，但我们又不想手动去最小化每个窗口，那么，只要在test.bat的start后加入参数”/min”即可</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> /min <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
-
-<p>这样就会在启动新窗口时自动最小化了。其它可用的参数如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“title” 指定在“命令提示符”窗口标题栏中显示的标题。</span><br><span class="line">/dpatch 指定启动目录。</span><br><span class="line">/i 将 Cmd.exe 启动环境传送到新的“命令提示符”窗口。</span><br><span class="line">/min 启动新的最小化窗口。</span><br><span class="line">/max 启动新的最大化窗口。</span><br><span class="line">/separate 在单独的内存空间启动 16 位程序。</span><br><span class="line">/shared 在共享的内存空间启动 16 位程序。</span><br><span class="line">/low 以空闲优先级启动应用程序。</span><br><span class="line">/normal 以一般优先级启动应用程序。</span><br><span class="line">/high 以高优先级启动应用程序。</span><br><span class="line">/realtime 以实时优先级启动应用程序。</span><br><span class="line">/abovenormal 以超出常规优先级的方式启动应用程序。</span><br><span class="line">/belownormal 以低出常规优先级的方式启动应用程序。</span><br><span class="line">/wait 启动应用程序，并等待其结束。</span><br><span class="line">/b 启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用 CTRL+C，否则将忽略 CTRL+C 操作。使用 CTRL+BREAK 中断应用程序。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>bat</tag>
-        <tag>脚本</tag>
       </tags>
   </entry>
 </search>
