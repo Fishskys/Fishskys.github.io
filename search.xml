@@ -1112,20 +1112,20 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/uncategorized/%E6%B8%85%E6%BA%90/</url>
+    <title>杭州游记</title>
+    <url>/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/</url>
     <content><![CDATA[<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
 <p><a href="https://item.szlcsc.com/24852.html">MPU-6050_（TDK InvenSense(应美盛)）MPU-6050中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/100740936">Arduino开发板使用MPU6050加速度计和陀螺仪的方法 - 知乎 (zhihu.com)</a></p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
+<p><img src="/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
 <p><a href="https://item.szlcsc.com/202245.html">BMI055_（Bosch(博世)）BMI055中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
 <h4 id="usb接口"><a href="#usb接口" class="headerlink" title="usb接口"></a>usb接口</h4><p><a href="https://zhuanlan.zhihu.com/p/447595295">秒懂所有USB接口类型，USB接口大全；Type-A、Type-B、Type-C、miniUSB、microUSB区分 - 知乎 (zhihu.com)</a></p>
-<h5 id="命名问题"><a href="#命名问题" class="headerlink" title="命名问题"></a>命名问题</h5><p><img src="/uncategorized/%E6%B8%85%E6%BA%90/usb.jpg" alt="usb"></p>
+<h5 id="命名问题"><a href="#命名问题" class="headerlink" title="命名问题"></a>命名问题</h5><p><img src="/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/usb.jpg" alt="usb"></p>
 <h5 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h5><p>标准USB接口：Type A，Type B支持USB1.0-3.2</p>
 <p>mini：mini A，mini B，仅支持到USB2.0</p>
 <p>Micro：Micro A，Micro B，支持到USB3.0</p>
 <p>Type C：从USB2.0-4.0</p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230628141549844.png" alt="image-20230628141549844"></p>
+<p><img src="/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/image-20230628141549844.png" alt="image-20230628141549844"></p>
 <h4 id="关于OTG"><a href="#关于OTG" class="headerlink" title="关于OTG"></a>关于OTG</h4><p><a href="https://zhuanlan.zhihu.com/p/454364494">手机OTG连接什么意思？都能实现哪些功能 - 知乎 (zhihu.com)</a></p>
 <p>OTG（On The Go，没有主机时的，端对端的数据传输，如相机直接与打印机连接而打印照片）功能是目前大多数智能手机的一个设计，具备这个功能的手机可通过使用OTG转接头或转接线连接其它设备。</p>
 <p>a:例如U盘，手机支持OTG、或者使用OTG转接头，然后就可以在手机上直接读取U盘文件。</p>
@@ -1154,7 +1154,7 @@
 <p><a href="https://item.szlcsc.com/391847.html">MMC5603NJ_（MEMSIC(美新)）MMC5603NJ中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
 <h3 id="2023-7-03"><a href="#2023-7-03" class="headerlink" title="2023.7.03"></a>2023.7.03</h3><p>今天画PCB板</p>
 <p>先放成果</p>
-<p><img src="/uncategorized/%E6%B8%85%E6%BA%90/image-20230703145943612.png" alt="image-20230703145943612"></p>
+<p><img src="/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/image-20230703145943612.png" alt="image-20230703145943612"></p>
 <p>几个注意事项：</p>
 <p>1.电源线要粗一点，这里用的是20mil，90°圆弧</p>
 <p>2.过不去的地方使用过孔。</p>
@@ -1169,6 +1169,13 @@
 
 <h3 id="2023-07-18"><a href="#2023-07-18" class="headerlink" title="2023.07.18"></a>2023.07.18</h3><p>这么多天一直在调试这个蓝牙模块WH-BLE103a，手机和windows都能连接的上，就是树莓派死活连接不了，受不了了。</p>
 ]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>IMU</tag>
+        <tag>PCB</tag>
+      </tags>
   </entry>
   <entry>
     <title>线代编程作业</title>
