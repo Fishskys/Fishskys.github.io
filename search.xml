@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Arduino读取MPU-9250数据</title>
-    <url>/Arduino/Arduino%E8%AF%BB%E5%8F%96MPU-9250%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<p>Arduino与MPU-9250通过IIC实现数据传输并尝试使用蓝牙传输数据</p>
-<span id="more"></span>
-
-<p>在淘宝商家找的成品并仿照设计了外围电路和PCB板子，师兄焊了三个板子，好在有一个能用（可以看出芯片真的非常小，确实不好焊）</p>
-<p><img src="1.jpg" alt="1" style="zoom: 10%;" /><img src="2.jpg" alt="2" style="zoom:10%;" /></p>
-<p>参照网上的这篇文章[(17条消息) <a href="https://blog.csdn.net/Gregory24/article/details/90454735">MPU9250+Arduino/读取传感器数据</a>，跑了他的代码，幸运的可以跑通。这个教程和另外一篇csdn上的文案一模一样，我都不知道谁抄谁的，难绷。</p>
-<img src="image-20230707112603099.png" alt="image-20230707112603099" style="zoom:50%;" />
-
-<p>接下来的工作是搞懂代码，修改输出的数据形式，并用蓝牙传输。</p>
-]]></content>
-      <categories>
-        <category>Arduino</category>
-      </categories>
-      <tags>
-        <tag>Arduino</tag>
-        <tag>IMU</tag>
-        <tag>蓝牙</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Arduino+蓝牙初尝试</title>
     <url>/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/</url>
     <content><![CDATA[<p>  使用Arduino连接蓝牙，并使用手机收发数据</p>
@@ -60,27 +38,25 @@
       </tags>
   </entry>
   <entry>
-    <title>Next主题在首页显示图片</title>
-    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
+    <title>Arduino读取MPU-9250数据</title>
+    <url>/Arduino/Arduino%E8%AF%BB%E5%8F%96MPU-9250%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<p>Arduino与MPU-9250通过IIC实现数据传输并尝试使用蓝牙传输数据</p>
 <span id="more"></span>
 
-<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在淘宝商家找的成品并仿照设计了外围电路和PCB板子，师兄焊了三个板子，好在有一个能用（可以看出芯片真的非常小，确实不好焊）</p>
+<p><img src="1.jpg" alt="1" style="zoom: 10%;" /><img src="2.jpg" alt="2" style="zoom:10%;" /></p>
+<p>参照网上的这篇文章[(17条消息) <a href="https://blog.csdn.net/Gregory24/article/details/90454735">MPU9250+Arduino/读取传感器数据</a>，跑了他的代码，幸运的可以跑通。这个教程和另外一篇csdn上的文案一模一样，我都不知道谁抄谁的，难绷。</p>
+<img src="image-20230707112603099.png" alt="image-20230707112603099" style="zoom:50%;" />
 
-<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
-<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
-<img src="image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
-
-<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
-<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: :categories/:title/test.jpg</code>这样的写法并不有效。</p>
+<p>接下来的工作是搞懂代码，修改输出的数据形式，并用蓝牙传输。</p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>Arduino</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>图片显示</tag>
+        <tag>Arduino</tag>
+        <tag>蓝牙</tag>
+        <tag>IMU</tag>
       </tags>
   </entry>
   <entry>
@@ -281,6 +257,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Next主题在首页显示图片</title>
+    <url>/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<p> 无意间发现的一种显示图片的方法。</p>
+<span id="more"></span>
+
+<p>在尝试自定义菜单栏，然后打算模仿post-collapse文件写一个新模板时，发现它有一行是 <code>&#123;&#123; post_gallery(post.photos) &#125;&#125;</code>（23行）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span>=<span class="string">&quot;http://schema.org/Article&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;post-header&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">itemprop</span>=<span class="string">&quot;dateCreated&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">datetime</span>=<span class="string">&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if post.link %&#125;&#123;# Link posts #&#125;</span><br><span class="line">        &#123;%- set postTitleIcon = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-external-link-alt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">        &#123;%- set postText = post.title or post.link %&#125;</span><br><span class="line">        &#123;&#123; next_url(post.link, postText + postTitleIcon, &#123;class: &#x27;post-title-link post-title-link-external&#x27;, itemprop: &#x27;url&#x27;&#125;) &#125;&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;post-title-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123; post.title or __(&#x27;post.untitled&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_gallery(post.photos) &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>于是猜想这是显示图片用的，但是具体图片的链接是什么呢，尝试着在文章头部加了一条新的属性photos，然后仿照在正文里插入图片的方法，写了图片的链接（正文里图片链接根目录为同名文件夹），即<code>photos: test.jpg</code>，但是意外的是，图片并没有正常显示。</p>
+<p>我打开F12，定位到图片位置，发现为<code>img src = &quot;/test.jpg&quot;</code>，对比了一下正文后，我发现了问题所在。在Hexo处理之后，它会根据根目录下<code>_config.yml</code>里<code>permalink: :category/:title/</code>，来将内容放置在public文件夹下。按照我的设置，它是放置在<code>public/Hexo/Next主题在首页显示图片/</code>下，于是我修改链接为<code>Hexo/Next主题在首页显示图片/test.jpg</code>后，图片成功显示，效果如下：</p>
+<img src="image-20230706165412088.png" alt="image-20230706165412088" style="zoom:50%;" />
+
+<p>同样，图片在归档界面同样会显示，如果不想显示的话，可以在<code>blog\themes\next\layout\_macro\post-collapse.njk</code>中删去那一行。</p>
+<p>值得一提的是，如果有每篇文章都显示图片的需求，可以在<code>blog\scaffolds\post.md</code>中加上photos这一行，但是，<code>photos: :categories/:title/test.jpg</code>这样的写法并不有效。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>图片显示</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bat脚本使用小tips</title>
+    <url>/%E9%9A%8F%E7%AC%94/bat%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%B0%8Ftips/</url>
+    <content><![CDATA[<p> 使用bat脚本时的一些小tips</p>
+<span id="more"></span>
+
+<p>1.echo off的作用</p>
+<p>参考这个，讲的很详细<a href="https://blog.csdn.net/qq_39071599/article/details/111477894">bat文件的@echo off是什么作用？_</a></p>
+<p>简单来讲就是，echo是回显的作用，会显示这条命令后的内容，而echo off就是关闭回显，但是不包括这条命令，@echo off就是关闭回显且包括这条命令</p>
+<p>2.在bat里调用其它bat</p>
+<p>两种方式，一种是call，在本bat窗口调用，另一种是start，会另开一个窗口</p>
+<p>这里以一个情景为例，在Desktop文件夹里我创建了test.bat文件，想要调用Desktop\test文件夹下三个bat文件，分别为1.bat,2.bat,3.bat，三个文件内容相同均为：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>由于没有加入pause，脚本会在迅速执行后自动关闭窗口</p>
+<p>那么我在test.bat文件中写入</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>期望的效果是，分别调用三个窗口，执行后自动关闭窗口，但是实际的效果是留下了三个窗口，如图</p>
+<img src="image-20230803233034468.png" alt="image-20230803233034468" style="zoom: 67%;" />
+
+<p>要想自动关闭这个窗口，在三个文件结尾加入exit即可。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，如果是一直执行的脚本，不能exit，但我们又不想手动去最小化每个窗口，那么，只要在test.bat的start后加入参数”/min”即可</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> /min <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
+
+<p>这样就会在启动新窗口时自动最小化了。其它可用的参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“title” 指定在“命令提示符”窗口标题栏中显示的标题。</span><br><span class="line">/dpatch 指定启动目录。</span><br><span class="line">/i 将 Cmd.exe 启动环境传送到新的“命令提示符”窗口。</span><br><span class="line">/min 启动新的最小化窗口。</span><br><span class="line">/max 启动新的最大化窗口。</span><br><span class="line">/separate 在单独的内存空间启动 16 位程序。</span><br><span class="line">/shared 在共享的内存空间启动 16 位程序。</span><br><span class="line">/low 以空闲优先级启动应用程序。</span><br><span class="line">/normal 以一般优先级启动应用程序。</span><br><span class="line">/high 以高优先级启动应用程序。</span><br><span class="line">/realtime 以实时优先级启动应用程序。</span><br><span class="line">/abovenormal 以超出常规优先级的方式启动应用程序。</span><br><span class="line">/belownormal 以低出常规优先级的方式启动应用程序。</span><br><span class="line">/wait 启动应用程序，并等待其结束。</span><br><span class="line">/b 启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用 CTRL+C，否则将忽略 CTRL+C 操作。使用 CTRL+BREAK 中断应用程序。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>bat</tag>
+        <tag>脚本</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++期末笔记</title>
     <url>/SJTU/c-%E6%9C%9F%E6%9C%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>程序设计思想与方法-期末复习</p>
@@ -371,48 +410,10 @@
       </tags>
   </entry>
   <entry>
-    <title>bat脚本使用小tips</title>
-    <url>/%E9%9A%8F%E7%AC%94/bat%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%B0%8Ftips/</url>
-    <content><![CDATA[<p> 使用bat脚本时的一些小tips</p>
-<span id="more"></span>
-
-<p>1.echo off的作用</p>
-<p>参考这个，讲的很详细<a href="https://blog.csdn.net/qq_39071599/article/details/111477894">bat文件的@echo off是什么作用？_</a></p>
-<p>简单来讲就是，echo是回显的作用，会显示这条命令后的内容，而echo off就是关闭回显，但是不包括这条命令，@echo off就是关闭回显且包括这条命令</p>
-<p>2.在bat里调用其它bat</p>
-<p>两种方式，一种是call，在本bat窗口调用，另一种是start，会另开一个窗口</p>
-<p>这里以一个情景为例，在Desktop文件夹里我创建了test.bat文件，想要调用Desktop\test文件夹下三个bat文件，分别为1.bat,2.bat,3.bat，三个文件内容相同均为：</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>由于没有加入pause，脚本会在迅速执行后自动关闭窗口</p>
-<p>那么我在test.bat文件中写入</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
-
-<p>期望的效果是，分别调用三个窗口，执行后自动关闭窗口，但是实际的效果是留下了三个窗口，如图</p>
-<img src="image-20230803233034468.png" alt="image-20230803233034468" style="zoom: 67%;" />
-
-<p>要想自动关闭这个窗口，在三个文件结尾加入exit即可。</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-
-<p>另外，如果是一直执行的脚本，不能exit，但我们又不想手动去最小化每个窗口，那么，只要在test.bat的start后加入参数”/min”即可</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">cd</span> test</span><br><span class="line"><span class="built_in">start</span> /min <span class="number">1</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">2</span>.bat</span><br><span class="line"><span class="built_in">start</span> <span class="number">3</span>.bat</span><br></pre></td></tr></table></figure>
-
-<p>这样就会在启动新窗口时自动最小化了。其它可用的参数如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“title” 指定在“命令提示符”窗口标题栏中显示的标题。</span><br><span class="line">/dpatch 指定启动目录。</span><br><span class="line">/i 将 Cmd.exe 启动环境传送到新的“命令提示符”窗口。</span><br><span class="line">/min 启动新的最小化窗口。</span><br><span class="line">/max 启动新的最大化窗口。</span><br><span class="line">/separate 在单独的内存空间启动 16 位程序。</span><br><span class="line">/shared 在共享的内存空间启动 16 位程序。</span><br><span class="line">/low 以空闲优先级启动应用程序。</span><br><span class="line">/normal 以一般优先级启动应用程序。</span><br><span class="line">/high 以高优先级启动应用程序。</span><br><span class="line">/realtime 以实时优先级启动应用程序。</span><br><span class="line">/abovenormal 以超出常规优先级的方式启动应用程序。</span><br><span class="line">/belownormal 以低出常规优先级的方式启动应用程序。</span><br><span class="line">/wait 启动应用程序，并等待其结束。</span><br><span class="line">/b 启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用 CTRL+C，否则将忽略 CTRL+C 操作。使用 CTRL+BREAK 中断应用程序。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>bat</tag>
-        <tag>脚本</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>realmeGTNeoRoot体验</title>
     <url>/%E6%89%8B%E6%9C%BA/realmeGTNeoRoot%E4%BD%93%E9%AA%8C/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<p> realmeGTNeo Root体验</p>
+<span id="more"></span>
 
 <p><a href="https://blog.csdn.net/qq2268338150/article/details/122427703?spm=1001.2014.3001.5501">Realme GT Neo ROOT 解锁BL教程_真我gtneo怎么root_Lash_circle的博客-CSDN博客</a></p>
 <p><img src="/%E6%89%8B%E6%9C%BA/realmeGTNeoRoot%E4%BD%93%E9%AA%8C/image-20230805215410062.png" alt="image-20230805215410062"></p>
@@ -424,6 +425,27 @@
       <tags>
         <tag>realme</tag>
         <tag>root</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于许嵩的杂谈</title>
+    <url>/%E6%9D%82%E8%B0%88/%E5%85%B3%E4%BA%8E%E8%AE%B8%E5%B5%A9%E7%9A%84%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<p> 今天看有关许嵩歌曲打分的视频下看到一个评论。</p>
+<span id="more"></span>
+
+<img src="1.jpg" alt="1" style="zoom:67%;" />
+
+<p>​        看到这个评论，我的第一反应就是这是个新粉。我也好奇我为什么会这样想。看到这些歌名的时候，我发现我对这些歌不是那么熟悉，这五首里面我听的最多其实是《乌鸦》，于是我去搜了一下这些歌的发行时间，发现其中最早的是2016年的《摄影艺术》。这五首歌的发行时间分别是21年，16年，18年，21年，22年。然后又去搜了下耳熟能详的一些歌曲，比如素颜10年，幻听12年，灰色头像10年，拆东墙11年，庐州月09年。于是我就明白了，我很喜欢许嵩的一些老歌，但这并不是说我不喜欢他的新歌，只是因为我没有主动的去关注许嵩新发布的一些歌曲。倘若在其他的地方你问我《留香》是谁的歌，我还真答不上来。</p>
+<p>​        这让我想起来为什么会喜欢许嵩了。小时候家里只有一台电脑，当时我上小学，哥哥上初中高中。许嵩和梁静茹是他最喜欢的两个歌手，每次玩游戏红色警戒、魔兽争霸3、3D坦克时，都会放他俩的歌曲，于是在这种熏陶之下，我不出意外的成为了许嵩的粉丝。当然，梁静茹的歌也并没有少听，但是印象深刻的并没有很多，只记得《勇气》，《大手牵小手》，《爱你不是两三天》，《可惜不是你》这些。但是我并不知道我哥更喜欢这两人中的哪个，因为印象里听许嵩的歌多一点，但是他手机壁纸却是梁静茹。</p>
+<p>​        为什么后来一直喜欢听许嵩的歌，但是听梁静茹的却少了呢，这缘于我的一个小学同学，叫他小宋吧。他是我的同桌，也喜欢许嵩的歌，但是整天却一口一个“许高”的叫着，为了纠正他的发音，当时真是费了好大的功夫。小学在规定的上学时间之前校门一直会关闭着，这时候来的早的同学们就拥挤在校门口玩耍，聊天，唱歌。几个要好的同学会一起齐唱某些歌，我和小宋除了唱许嵩的歌之外，印象比较深刻的还有张杰的《天下》、《剑心》，徐良汪苏泷的《后会无期》。还记得当时我为了第二天能够唱出来《庐州月》，前一天晚上直接听了30多遍，现在想来都是满满的回忆。</p>
+<p>​        再后来上了初中和高中，就没再遇到过一个同样喜欢许嵩的而且关系比较好的朋友了，不过对许嵩的喜欢已经印在心里了，熟悉我的朋友都知道我比较喜欢许嵩。</p>
+<p>​        回到这个评论，我发觉自己确实有点困在过去的许嵩里了，困在那个哥哥和小宋带我一起听歌的日子里，所以我决定多去听听他的新歌吧。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>许嵩</tag>
       </tags>
   </entry>
   <entry>
@@ -1178,38 +1200,6 @@
       </tags>
   </entry>
   <entry>
-    <title>线代编程作业</title>
-    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<p>SJTU线性代数编程作业</p>
-<span id="more"></span>
-
-<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
-<p>(1)计算23阶行列式D</p>
-<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
-<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
-<p>(二)行列式D(矩阵A)的产生:</p>
-<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
-<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
-<p>项依次排在行列式的各行上.</p>
-<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
-<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
-<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
-<p>文件为源文件与输出文件.</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SJTU</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>线代</tag>
-        <tag>matlab</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>红米Note12Turbo上手体验与真我GTNeo对比</title>
     <url>/%E6%9D%82%E8%B0%88/%E7%BA%A2%E7%B1%B3Note12Turbo%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C%E4%B8%8E%E7%9C%9F%E6%88%91GTNeo%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<p>这两天入手了红米Note12Turbo，在更换手机和使用过程中有不少感触，拿出来讲一讲。</p>
@@ -1257,6 +1247,38 @@
       <tags>
         <tag>手机</tag>
         <tag>手机系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线代编程作业</title>
+    <url>/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<p>SJTU线性代数编程作业</p>
+<span id="more"></span>
+
+<h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><p>(一)任意选一种数学软件如Mathematica,MATLAB,Maple，或你学过的其它编程软件如C++计算:</p>
+<p>(1)计算23阶行列式D</p>
+<p>(2)对9x13矩阵A,做行初等变换求A的规范的阶梯形矩阵H和方程AX=0的通解</p>
+<p>(3)求A的列向量组的一个极大无关组,并对得到的极大无关组施行Schmidt正交化求标准正交组.</p>
+<p>(二)行列式D(矩阵A)的产生:</p>
+<p>设D=dij23.则0&lt;=dij&lt;=9都是整数,利用你的学号构造一个一位整数构成的数列.把学号的每一位上数(从左到右)作为数列的一项;把每一位的</p>
+<p>平方拆成一位数作为数列的一项;把每一位的立方拆成一位数作为数列的每一项;这样依次下去，直到得到足够多的项.把所得到的数列的各</p>
+<p>项依次排在行列式的各行上.</p>
+<p>例如:你的学号是1234567890.则一个13阶的行列式如下:</p>
+<p><img src="/SJTU/%E7%BA%BF%E4%BB%A3%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A/1.png"></p>
+<p>(三)程序输入为你的学号(可以作为一个整体,也可以逐位输入),输出为行列式(最后结果)、规范的阶梯阵、极大无关组与标准正交组。上传</p>
+<p>文件为源文件与输出文件.</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><h3 id="c-生成23阶矩阵"><a href="#c-生成23阶矩阵" class="headerlink" title="c++生成23阶矩阵"></a>c++生成23阶矩阵</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_length</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>)<span class="keyword">return</span> i;</span><br><span class="line">		p /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;输入12位学号，空格间隔输入或者每输一个就换行&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">int</span> line[<span class="number">529</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span>  k = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; line[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cont = <span class="number">2</span>;; cont++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = <span class="built_in">pow</span>(line[i], cont);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont)); j &gt; <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k + j &gt; <span class="number">528</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp /= <span class="number">10</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				line[k + j] = temp % <span class="number">10</span>;</span><br><span class="line">				temp /= <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k = k + <span class="built_in">my_length</span>(<span class="built_in">pow</span>(line[i], cont));</span><br><span class="line">			<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= <span class="number">528</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">529</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; line[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">23</span> == <span class="number">0</span>)cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;23x23矩阵A为&#x27;</span>);</span><br><span class="line"><span class="comment">%将生成的23阶矩阵粘贴在A处</span></span><br><span class="line">A=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(1)题：生成23阶矩阵D1并计算行列式D</span></span><br><span class="line">fprintf(<span class="string">&#x27;A的行列式为&#x27;</span>);</span><br><span class="line">D=det(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(2)题：生成9x13矩阵A并化为阶梯形矩阵</span></span><br><span class="line">A1=<span class="built_in">zeros</span>(<span class="number">9</span>,<span class="number">13</span>);</span><br><span class="line">fprintf(<span class="string">&#x27;9x13矩阵A1为&#x27;</span>);</span><br><span class="line">A1(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)=A(<span class="number">1</span>:<span class="number">9</span>,<span class="number">1</span>:<span class="number">13</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;化为规范阶梯型&#x27;</span>);</span><br><span class="line">H=rref(A1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%求基础解系</span></span><br><span class="line">format <span class="built_in">rat</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;基础解系&#x27;</span>);</span><br><span class="line">x=null(A1,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%第(3)题B为极大无关组，C为是施密特正交化后的结果</span></span><br><span class="line">[H <span class="built_in">j</span>]=rref(A1);</span><br><span class="line">fprintf(<span class="string">&#x27;极大无关组为&#x27;</span>);</span><br><span class="line">B=A1(:,<span class="built_in">j</span>)</span><br><span class="line">fprintf(<span class="string">&#x27;施密特正交化后&#x27;</span>);</span><br><span class="line">C=Schmidt_orthogonalization(B)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>=<span class="title">Schmidt_orthogonalization</span><span class="params">(A)</span></span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A);</span><br><span class="line">b=<span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="comment">%正交化</span></span><br><span class="line">b(:,<span class="number">1</span>)=A(:,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">i</span><span class="number">-1</span></span><br><span class="line">        b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)-<span class="built_in">dot</span>(A(:,<span class="built_in">i</span>),b(:,<span class="built_in">j</span>))/<span class="built_in">dot</span>(b(:,<span class="built_in">j</span>),b(:,<span class="built_in">j</span>))*b(:,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    b(:,<span class="built_in">i</span>)=b(:,<span class="built_in">i</span>)+A(:,<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%单位化</span></span><br><span class="line"> <span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">     b(:,k)=b(:,k)/norm(b(:,k));</span><br><span class="line"> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SJTU</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>线代</tag>
+        <tag>matlab</tag>
       </tags>
   </entry>
   <entry>
