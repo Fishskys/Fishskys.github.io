@@ -1116,9 +1116,12 @@
       </tags>
   </entry>
   <entry>
-    <title>杭州游记</title>
+    <title>清源</title>
     <url>/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/</url>
-    <content><![CDATA[<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
+    <content><![CDATA[<p> 在清源研究院实习的一些记录</p>
+<span id="more"></span>
+
+<h3 id="2023-6-28"><a href="#2023-6-28" class="headerlink" title="2023.6.28"></a>2023.6.28</h3><p>mpu6050 六轴，三轴加速度，三轴陀螺仪</p>
 <p><a href="https://item.szlcsc.com/24852.html">MPU-6050_（TDK InvenSense(应美盛)）MPU-6050中文资料_价格_PDF手册-立创电子商城 (szlcsc.com)</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/100740936">Arduino开发板使用MPU6050加速度计和陀螺仪的方法 - 知乎 (zhihu.com)</a></p>
 <p><img src="/%E9%9A%8F%E7%AC%94/%E6%B8%85%E6%BA%90/image-20230628110652555.png" alt="image-20230628110652555"></p>
