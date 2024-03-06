@@ -14,7 +14,7 @@ body {
 //R G B 透明度0-1，越低越透明
 .main-inner {
     background-color: rgba(255, 255, 255, 0);
-    padding: 10px 30px 30px 30px;
+    padding: 10px 50px 30px 50px;
 }
 
 //post板块，设置圆角
@@ -22,10 +22,16 @@ body {
 .post-block{
         background-color: rgba(255, 255, 255, 0.90);
         //margin-top: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
         padding: 30px;
         border-radius: 30px 30px 30px 30px;
         box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+
+//去掉post-footer
+.post-eof {
+  height: 0px;
+  margin: 0px;
 }
 
 //最上边一条线
@@ -46,6 +52,13 @@ header.header {
     box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);   	
 }
 
+//menu菜单
+.menu-item{
+    a{
+        font-size:16px;
+ }
+}
+
 //史莱姆小屋那个黑框
 .site-brand-container {
     background-color: rgba(0 ,0 ,0 ,0.9);
@@ -57,6 +70,10 @@ header.header {
     background-color: rgba(255 ,255 ,255 ,0.85);
     border-radius: 30px 30px 30px 30px;
     box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);    
+}
+
+.post-toc {
+    font-size: 16px;
 }
 
 //翻页按钮
@@ -95,6 +112,7 @@ div.wl-panel {
        //width: auto;
 }
 .copyright {
+    color: rgb(0,0,0);
     background-color: rgba(255 ,255 ,255 ,0.85);
     margin: 0 35%;
     box-sizing: border-box;
@@ -103,6 +121,7 @@ div.wl-panel {
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.12),-1px -1px 1px 0 rgba(0,0,0,0.3); 
 }
 .Thanks {
+    color: rgb(0,0,0);
     background-color: rgba(255 ,255 ,255 ,0.85);
     margin: 0 35%;
     box-sizing: border-box;
@@ -117,7 +136,7 @@ div.wl-panel {
     background-color: #00bfff;
     //background-color: #ffffff;
     color: #000000;
-    padding: 5px;
+    padding: 15px;
     border-radius: 10px 10px 10px 10px;
 }
 
