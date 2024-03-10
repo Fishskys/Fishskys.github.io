@@ -1,4 +1,409 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png"><link rel="mask-icon" href="/images/logo.svg" color="#222"><meta name="google-site-verification" content="fMdXnLxbfVOdv733_WYhGR9IYq5Ga2aOQmJ53Zx4qn8"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=sans-serif:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous"><script class="next-config" data-name="main" type="application/json">{"hostname":"astonefishsky.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":30,"offset":12,"width":300},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="使用Arduino连接蓝牙，并使用手机收发数据"><meta property="og:type" content="article"><meta property="og:title" content="Arduino+蓝牙初尝试"><meta property="og:url" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/index.html"><meta property="og:site_name" content="史莱姆小屋"><meta property="og:description" content="使用Arduino连接蓝牙，并使用手机收发数据"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/lanya.jpg"><meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/连接方式.png"><meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/20210730122053654.png"><meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/48d4e77c0fc95af36bff96d2ccc09ec.jpg"><meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/4a5b8eb1c8ed1f02d98956d9cac2189.jpg"><meta property="article:published_time" content="2023-07-06T03:27:21.000Z"><meta property="article:modified_time" content="2023-07-13T02:07:04.263Z"><meta property="article:author" content="瓶装史莱姆酱"><meta property="article:tag" content="Arduino"><meta property="article:tag" content="蓝牙"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/lanya.jpg"><link rel="canonical" href="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/"><script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/","path":"Arduino/Arduino-蓝牙初尝试/","title":"Arduino+蓝牙初尝试"}</script><script class="next-config" data-name="calendar" type="application/json">""</script><title>Arduino+蓝牙初尝试 | 史莱姆小屋</title><link rel="dns-prefetch" href="waline-comments-drab.vercel.app"><noscript><link rel="stylesheet" href="/css/noscript.css"></noscript></head><body itemscope itemtype="http://schema.org/WebPage"><div class="headband"></div><main class="main"><div class="column"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏" role="button"><span class="toggle-line"></span><span class="toggle-line"></span><span class="toggle-line"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><i class="logo-line"></i><p class="site-title">史莱姆小屋</p><i class="logo-line"></i></a></div><div class="site-nav-right"><div class="toggle popup-trigger" aria-label="搜索" role="button"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i> 搜索</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"> <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close" role="button"><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class="search-result-icon"><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></header><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc"> 文章目录</li><li class="sidebar-nav-overview"> 站点概览</li></ul><div class="sidebar-panel-container"><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-text">连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-text">样例代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AT%E9%85%8D%E7%BD%AE"><span class="nav-text">AT配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-text">调试</span></a></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" alt="瓶装史莱姆酱" src="/images/first.png"><p class="site-author-name" itemprop="name">瓶装史莱姆酱</p><div class="site-description" itemprop="description">一个个人博客网站，记录生活、学习</div></div><div class="site-state-wrap animated"><nav class="site-state"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">19</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">6</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author animated"><span class="links-of-author-item"><a href="https://github.com/Fishskys" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fishskys" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1721619420@qq.com" title="E-Mail → mailto:1721619420@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i> E-Mail</a></span></div></div></div></div></aside></div><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/first.png"><meta itemprop="name" content="瓶装史莱姆酱"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="史莱姆小屋"><meta itemprop="description" content="一个个人博客网站，记录生活、学习"></span><span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork"><meta itemprop="name" content="Arduino+蓝牙初尝试 | 史莱姆小屋"><meta itemprop="description" content=""></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> Arduino+蓝牙初尝试</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2023-07-06 11:27:21" itemprop="dateCreated datePublished" datetime="2023-07-06T11:27:21+08:00">2023-07-06</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar-check"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2023-07-13 10:07:04" itemprop="dateModified" datetime="2023-07-13T10:07:04+08:00">2023-07-13</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Arduino/" itemprop="url" rel="index"><span itemprop="name">Arduino</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-comment"></i></span> <span class="post-meta-item-text">Waline：</span><a title="waline" href="/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/#waline" itemprop="discussionUrl"><span class="post-comments-count waline-comment-count" data-path="/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/" itemprop="commentCount"></span></a></span><span class="post-meta-item" title="本文字数"><span class="post-meta-item-icon"><i class="far fa-file-word"></i></span> <span class="post-meta-item-text">本文字数：</span> <span>1.4k</span></span></div></div></header><div class="post-body" itemprop="articleBody"><p> 使用Arduino连接蓝牙，并使用手机收发数据</p><span id="more"></span><p>师兄给的这个不知道是哪个型号的蓝牙模块，长得跟HC-05有点像但又不是，不过经测试，使用方法跟HC-05一致。主要参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/catzhaojia/article/details/119243058">Arduino连接蓝牙（HC-05）</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410730/article/details/80368485">【常用模块】HC-05蓝牙串口通信模块使用详解（实例：手机蓝牙控制STM32单片机）</a></p> <img src="lanya.jpg" alt="lanya" style="zoom:33%"><h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>连接方式如下</p> <img src="连接方式.png" alt="连接方式" style="zoom:80%"><h3 id="样例代码"><a href="#样例代码" class="headerlink" title="样例代码"></a>样例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;SoftwareSerial.h&gt;</span> </span></span><br><span class="line"><span class="comment">// Pin10接HC05的TXD</span></span><br><span class="line"><span class="comment">// Pin11接HC05的RXD</span></span><br><span class="line"><span class="function">SoftwareSerial <span class="title">BT</span><span class="params">(<span class="number">10</span>, <span class="number">11</span>)</span></span>; </span><br><span class="line"><span class="keyword">char</span> val;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Serial.<span class="built_in">begin</span>(<span class="number">9600</span>); </span><br><span class="line">  Serial.<span class="built_in">println</span>(<span class="string">&quot;bluetooth is ready!&quot;</span>);</span><br><span class="line">  BT.<span class="built_in">begin</span>(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//读取缓冲区字符实现收发数据</span></span><br><span class="line">  <span class="keyword">if</span> (Serial.<span class="built_in">available</span>()) &#123;</span><br><span class="line">    val = Serial.<span class="built_in">read</span>();</span><br><span class="line">    BT.<span class="built_in">print</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (BT.<span class="built_in">available</span>()) &#123;</span><br><span class="line">    val = BT.<span class="built_in">read</span>();</span><br><span class="line">    Serial.<span class="built_in">print</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="AT配置"><a href="#AT配置" class="headerlink" title="AT配置"></a>AT配置</h3><p>烧入Arduino后，我们如果是第一次使用，要对蓝牙模块进行配置，根据<a href="%5B%5B%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97%5DHC-05%E8%93%9D%E7%89%99%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9A%E6%89%8B%E6%9C%BA%E8%93%9D%E7%89%99%E6%8E%A7%E5%88%B6STM32%E5%8D%95%E7%89%87%E6%9C%BA%EF%BC%89_%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97hc05_Yngz_Miao%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2%5D(https://blog.csdn.net/qq_38410730/article/details/80368485)">这篇博客</a>的说法，需要进入命令响应模式</p><blockquote><p>蓝牙模块的调试<br>HC-05蓝牙串口通讯模块具有两种工作模式：<strong>命令响应工作模式</strong>和<strong>自动连接工作模式</strong>。在自动连接工作模式下模块又可分为主（Master）、从（Slave）和回环（Loopback）三种工作角色。<br>当模块处于自动连接工作模式时，将自动根据事先设定的方式连接的数据传输；<br>当模块处于命令响应工作模式时能执行AT命令，用户可向模块发送各种AT 指令，为模块设定控制参数或发布控制命令。<br><strong>怎么进入命令响应工作模式？</strong><br>进入命令响应工作模式有两种方法：<br>模块上电，未配对情况下就是AT模式，波特率为模块本身的波特率，默认：9600，发送一次AT指令时需要置高一次PIO11；<br>PIO11 置高电平后，再给模块上电，此时模块进入AT 模式，波特率固定为：38400，可以直接发送AT指令。<br><strong>什么叫做置高一次PIO11？</strong><br>在蓝牙模块中有一个小按键，按一下就置高一次PIO11。也就是说，第一种方法需要每发送一次AT指令按一次；而第二种方式是长按的过程中上电，之后就无需再管了，直接发送AT命令即可。<br>需要注意一下，两种进入命令响应工作模式的方式使用的波特率是不一样的，<strong>建议使用第二种方式。</strong></p></blockquote><p>简单来讲，就是先给Arduino断电，然后按住蓝牙模块按钮的同时再给Arduino上电即可。</p> <img src="20210730122053654.png" alt="AT" style="zoom:67%"><p>配置方法是打开arduino的串口监视器，右下角设置为NL和CR，波特率38400，然后在输入框中输入指令即可。</p><p>主要用到的指令有获取和设置名字、查询和设置配对密码、查询和设置波特率，其它指令可以自行尝试。</p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>接着我们要用到一款手机软件（没找到电脑调试的）“蓝牙调试器”，图标如图所示，可以到手机的软件商城或者浏览器自行搜索下载。其它软件大同小异，过程就是搜索蓝牙，连接HC-05，然后在手机和电脑的串口各自发送数据并查看接受情况</p> <img src="48d4e77c0fc95af36bff96d2ccc09ec.jpg" alt="蓝牙调试器" style="zoom:33%"> <img src="4a5b8eb1c8ed1f02d98956d9cac2189.jpg" alt="4a5b8eb1c8ed1f02d98956d9cac2189" style="zoom:50%"></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Arduino/" rel="tag"><i class="fa fa-tag"></i> Arduino</a><a href="/tags/%E8%93%9D%E7%89%99/" rel="tag"><i class="fa fa-tag"></i> 蓝牙</a></div><div class="post-nav"><div class="post-nav-item"><a href="/Hexo/Hexo-Next-8-17-1%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/" rel="prev" title="Hexo+Next-8.17.1美化教程"><i class="fa fa-angle-left"></i> Hexo+Next-8.17.1美化教程</a></div><div class="post-nav-item"> <a href="/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" rel="next" title="Next主题在首页显示图片">Next主题在首页显示图片<i class="fa fa-angle-right"></i></a></div></div></footer></article></div><div class="comments" id="waline"></div></div></main><footer class="footer"><div class="footer-inner"><div class="copyright"> &copy; 2021 – <span itemprop="copyrightYear">2024</span> <span class="by">by</span> <span class="author" itemprop="copyrightHolder">瓶装史莱姆酱</span></div><div class="Thanks"> Thanks <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.</a></div></div></footer><div class="back-to-top" role="button" aria-label="返回顶部"><i class="fa fa-arrow-up fa-lg"></i> <span>0%</span></div><div class="reading-progress-bar"></div> <a href="https://github.com/Fishskys" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115 130 115 142 142 250 250 250 0Z"></path><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8Z" fill="currentColor" class="octo-body"></path></svg></a><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script><script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script><script src="/js/third-party/search/local-search.js"></script><script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"waline-comments-drab.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":false,"locale":{"placeholder":"欢迎评论"},"avatar":"mm","meta":["nick","mail","link"],"requiredMeta":[],"pageSize":10,"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/"}</script><link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"><script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="fMdXnLxbfVOdv733_WYhGR9IYq5Ga2aOQmJ53Zx4qn8">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=sans-serif:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"astonefishsky.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":30,"offset":12,"width":300},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用Arduino连接蓝牙，并使用手机收发数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arduino+蓝牙初尝试">
+<meta property="og:url" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/index.html">
+<meta property="og:site_name" content="史莱姆小屋">
+<meta property="og:description" content="使用Arduino连接蓝牙，并使用手机收发数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/lanya.jpg">
+<meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/连接方式.png">
+<meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/20210730122053654.png">
+<meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/48d4e77c0fc95af36bff96d2ccc09ec.jpg">
+<meta property="og:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/4a5b8eb1c8ed1f02d98956d9cac2189.jpg">
+<meta property="article:published_time" content="2023-07-06T03:27:21.000Z">
+<meta property="article:modified_time" content="2023-07-13T02:07:04.263Z">
+<meta property="article:author" content="瓶装史莱姆酱">
+<meta property="article:tag" content="Arduino">
+<meta property="article:tag" content="蓝牙">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/lanya.jpg">
+
+
+<link rel="canonical" href="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/","path":"Arduino/Arduino-蓝牙初尝试/","title":"Arduino+蓝牙初尝试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Arduino+蓝牙初尝试 | 史莱姆小屋</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="waline-comments-drab.vercel.app">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">史莱姆小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">36</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-text">连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-text">样例代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AT%E9%85%8D%E7%BD%AE"><span class="nav-text">AT配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-text">调试</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="瓶装史莱姆酱"
+      src="/images/first.png">
+  <p class="site-author-name" itemprop="name">瓶装史莱姆酱</p>
+  <div class="site-description" itemprop="description">一个个人博客网站，记录生活、学习</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fishskys" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fishskys" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1721619420@qq.com" title="E-Mail → mailto:1721619420@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://astonefishsky.github.io/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/first.png">
+      <meta itemprop="name" content="瓶装史莱姆酱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="史莱姆小屋">
+      <meta itemprop="description" content="一个个人博客网站，记录生活、学习">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Arduino+蓝牙初尝试 | 史莱姆小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Arduino+蓝牙初尝试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-06 11:27:21" itemprop="dateCreated datePublished" datetime="2023-07-06T11:27:21+08:00">2023-07-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-13 10:07:04" itemprop="dateModified" datetime="2023-07-13T10:07:04+08:00">2023-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Arduino/" itemprop="url" rel="index"><span itemprop="name">Arduino</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>  使用Arduino连接蓝牙，并使用手机收发数据</p>
+<span id="more"></span>
+
+<p>师兄给的这个不知道是哪个型号的蓝牙模块，长得跟HC-05有点像但又不是，不过经测试，使用方法跟HC-05一致。主要参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/catzhaojia/article/details/119243058">Arduino连接蓝牙（HC-05）</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410730/article/details/80368485">【常用模块】HC-05蓝牙串口通信模块使用详解（实例：手机蓝牙控制STM32单片机）</a></p>
+<img src="lanya.jpg" alt="lanya" style="zoom: 33%;" />
+
+<h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>连接方式如下</p>
+<img src="连接方式.png" alt="连接方式" style="zoom: 80%;" />
+
+<h3 id="样例代码"><a href="#样例代码" class="headerlink" title="样例代码"></a>样例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;SoftwareSerial.h&gt;</span> </span></span><br><span class="line"><span class="comment">// Pin10接HC05的TXD</span></span><br><span class="line"><span class="comment">// Pin11接HC05的RXD</span></span><br><span class="line"><span class="function">SoftwareSerial <span class="title">BT</span><span class="params">(<span class="number">10</span>, <span class="number">11</span>)</span></span>; </span><br><span class="line"><span class="keyword">char</span> val;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Serial.<span class="built_in">begin</span>(<span class="number">9600</span>); </span><br><span class="line">  Serial.<span class="built_in">println</span>(<span class="string">&quot;bluetooth is ready!&quot;</span>);</span><br><span class="line">  BT.<span class="built_in">begin</span>(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//读取缓冲区字符实现收发数据</span></span><br><span class="line">  <span class="keyword">if</span> (Serial.<span class="built_in">available</span>()) &#123;</span><br><span class="line">    val = Serial.<span class="built_in">read</span>();</span><br><span class="line">    BT.<span class="built_in">print</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (BT.<span class="built_in">available</span>()) &#123;</span><br><span class="line">    val = BT.<span class="built_in">read</span>();</span><br><span class="line">    Serial.<span class="built_in">print</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AT配置"><a href="#AT配置" class="headerlink" title="AT配置"></a>AT配置</h3><p>烧入Arduino后，我们如果是第一次使用，要对蓝牙模块进行配置，根据<a href="%5B%5B%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97%5DHC-05%E8%93%9D%E7%89%99%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9A%E6%89%8B%E6%9C%BA%E8%93%9D%E7%89%99%E6%8E%A7%E5%88%B6STM32%E5%8D%95%E7%89%87%E6%9C%BA%EF%BC%89_%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97hc05_Yngz_Miao%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2%5D(https://blog.csdn.net/qq_38410730/article/details/80368485)">这篇博客</a>的说法，需要进入命令响应模式</p>
+<blockquote>
+<p>蓝牙模块的调试<br>HC-05蓝牙串口通讯模块具有两种工作模式：<strong>命令响应工作模式</strong>和<strong>自动连接工作模式</strong>。在自动连接工作模式下模块又可分为主（Master）、从（Slave）和回环（Loopback）三种工作角色。<br>当模块处于自动连接工作模式时，将自动根据事先设定的方式连接的数据传输；<br>当模块处于命令响应工作模式时能执行AT命令，用户可向模块发送各种AT 指令，为模块设定控制参数或发布控制命令。<br><strong>怎么进入命令响应工作模式？</strong><br>进入命令响应工作模式有两种方法：<br>模块上电，未配对情况下就是AT模式，波特率为模块本身的波特率，默认：9600，发送一次AT指令时需要置高一次PIO11；<br>PIO11 置高电平后，再给模块上电，此时模块进入AT 模式，波特率固定为：38400，可以直接发送AT指令。<br><strong>什么叫做置高一次PIO11？</strong><br>在蓝牙模块中有一个小按键，按一下就置高一次PIO11。也就是说，第一种方法需要每发送一次AT指令按一次；而第二种方式是长按的过程中上电，之后就无需再管了，直接发送AT命令即可。<br>需要注意一下，两种进入命令响应工作模式的方式使用的波特率是不一样的，<strong>建议使用第二种方式。</strong></p>
+</blockquote>
+<p>简单来讲，就是先给Arduino断电，然后按住蓝牙模块按钮的同时再给Arduino上电即可。</p>
+<img src="20210730122053654.png" alt="AT" style="zoom: 67%;" />
+
+<p>配置方法是打开arduino的串口监视器，右下角设置为NL和CR，波特率38400，然后在输入框中输入指令即可。</p>
+<p>主要用到的指令有获取和设置名字、查询和设置配对密码、查询和设置波特率，其它指令可以自行尝试。</p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>接着我们要用到一款手机软件（没找到电脑调试的）“蓝牙调试器”，图标如图所示，可以到手机的软件商城或者浏览器自行搜索下载。其它软件大同小异，过程就是搜索蓝牙，连接HC-05，然后在手机和电脑的串口各自发送数据并查看接受情况</p>
+<img src="48d4e77c0fc95af36bff96d2ccc09ec.jpg" alt="蓝牙调试器" style="zoom: 33%;" />
+
+
+
+<img src="4a5b8eb1c8ed1f02d98956d9cac2189.jpg" alt="4a5b8eb1c8ed1f02d98956d9cac2189" style="zoom:50%;" />
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Arduino/" rel="tag"><i class="fa fa-tag"></i> Arduino</a>
+              <a href="/tags/%E8%93%9D%E7%89%99/" rel="tag"><i class="fa fa-tag"></i> 蓝牙</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Hexo/Hexo-Next-8-17-1%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/" rel="prev" title="Hexo+Next-8.17.1美化教程">
+                  <i class="fa fa-angle-left"></i> Hexo+Next-8.17.1美化教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hexo/Next%E4%B8%BB%E9%A2%98%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" rel="next" title="Next主题在首页显示图片">
+                  Next主题在首页显示图片 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="by">
+      by
+    </span>
+    <span class="author" itemprop="copyrightHolder">瓶装史莱姆酱</span>
+  </div>
+  <div class="Thanks"> Thanks <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.</a>
+  </div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Fishskys" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"waline-comments-drab.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":false,"locale":{"placeholder":"欢迎评论"},"avatar":"mm","meta":["nick","mail","link"],"requiredMeta":[],"pageSize":10,"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/Arduino/Arduino-%E8%93%9D%E7%89%99%E5%88%9D%E5%B0%9D%E8%AF%95/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.waline.el).then(() =>
     NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
@@ -6,4 +411,7 @@ document.addEventListener('page:loaded', () => {
     Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
   );
 });
-</script></body></html>
+</script>
+
+</body>
+</html>
